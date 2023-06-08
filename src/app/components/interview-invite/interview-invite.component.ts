@@ -13,11 +13,12 @@ export class InterviewInviteComponent {
   onInviteLinkClick(): void {
     this.imocha.inviteCandidate(1238185, 'Minseon Song', 'minseon.song@revature.com').subscribe({
       next: ({ testInvitationId, testUrl }) => {
+        console.log('herrow', testUrl);
         this.auth.setCurrentUser({
           name: 'Minseon Song',
           email: 'minseon.song@revature.com'
         })
-        window.open(testUrl, '_self');
+        window.open(testUrl, '_blank');
       },
       error: (err) => {
         console.error(err);
