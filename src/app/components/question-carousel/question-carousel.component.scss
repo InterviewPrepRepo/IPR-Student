@@ -1,0 +1,25 @@
+.control {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.prev {
+    display: flex;
+    justify-content: flex-end;
+    order: -1;
+}
+
+.next {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
