@@ -1,0 +1,31 @@
+<div class="container">
+    <p>Seems like you know this subject well. Why don't you try a mock interview? </p> <a class="link"
+        [cModalToggle]="userModal.id" cButton>Click
+        here</a>
+    <p>It only takes 15 minutes and you'll get a result right after</p>
+
+    <c-modal #userModal alignment="center" backdrop="static" id="userModal">
+        <c-modal-header>
+            <h5 cModalTitle>Your Details</h5>
+        </c-modal-header>
+        <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
+            <c-modal-body>
+
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="text" class="form-control" formControlName="email">
+                </div>
+
+
+            </c-modal-body>
+            <c-modal-footer>
+                <input type="submit" value="Go To Test" class="btn login-btn btn-outline-revature-primary"
+                    [cModalToggle]="userModal.id" cButton (click)="onInviteLinkClick()" />
+            </c-modal-footer>
+        </form>
+    </c-modal>
+</div>

@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+:root {
+    --revature-orange: rgb(255, 112, 20);
+    --revature-orange-subtle: rgba(255, 112, 20, 0.7);
+
+    --revature-yellow: rgb(255, 207, 0);
+    --revature-yellow-subtle: rgba(255, 207, 0, 0.5);
+
+    --revature-blue: rgb(7, 65, 203);
+    --revature-light-blue: rgb(94, 188, 225);
+
+    --revature-green: rgb(9, 156, 69);
+    --revature-light-green: rgb(220, 254, 95);
+    --revature-black: rgb(51, 56, 63);
+    --revature-gray: rgb(185, 185, 186);
+    --revature-white: rgb(255, 255, 255);
+
+    --revature-navy: rgb(0, 24, 60);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.link {
+    color: var(--bs-link-color);
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: var(--bs-link-hover-color);
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.btn-revature-primary {
+    background-color: var(--revature-orange-subtle);
+    color: var(--revature-black);
+}
+
+.btn-revature-primary:hover {
+    background-color: var(--revature-orange);
+}
+
+.btn-outline-revature-primary {
+    background-color: inherit;
+    color: var(--revature-orange-subtle);
+    border: var(--revature-orange-subtle) solid 2px;
+}
+
+.btn-outline-revature-primary:hover {
+    background-color: inherit;
+    color: var(--revature-orange);
+    border-color: var(--revature-orange);
+}
+
+h2 {
+    color: var(--revature-black);
+}
+
+thead {
+    color: var(--revature-orange);
+}
