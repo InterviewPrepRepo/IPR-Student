@@ -1,0 +1,21 @@
+<div class="container">
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <label>{{question.question}}</label>
+        <div class="form-group">
+            <div [ngClass]="setColor(question.options[0])"><input type="radio" formControlName="answer"
+                    value={{question.options[0]}} class="form-check-input">{{question.options[0]}}</div>
+            <div [ngClass]="setColor(question.options[1])"><input type="radio" formControlName="answer"
+                    value={{question.options[1]}} class="form-check-input">{{question.options[1]}}</div>
+            <div [ngClass]="setColor(question.options[2])"><input type="radio" formControlName="answer"
+                    value={{question.options[2]}} class="form-check-input">{{question.options[2]}}</div>
+            <div [ngClass]="setColor(question.options[3])"><input type="radio" formControlName="answer"
+                    value={{question.options[3]}} class="form-check-input">{{question.options[3]}}</div>
+        </div>
+        <div *ngIf="submitted">
+            {{result}}
+        </div>
+        <div class="container submit-ctnr">
+            <button type="submit" class="btn btn-outline-revature-primary">Submit</button>
+        </div>
+    </form>
+</div>

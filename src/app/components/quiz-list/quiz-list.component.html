@@ -1,0 +1,26 @@
+<div class="quiz-window row" *ngIf="chosenQuiz.length > 0">
+    <div class="card col-3 quiz-card">
+        <img class="card-img-top quiz-card-img-top" src="assets/REVATURE-PrimaryLogo-FullClr.svg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title quiz-card-title">{{chosenQuiz}}</h5>
+        </div>
+    </div>
+    <div class="col quiz-section">
+        <app-question-carousel *ngIf="chosenQuiz==='Core Java' else noQuiz"></app-question-carousel>
+        <ng-template #noQuiz>
+            <p>No quiz available for this topic</p>
+        </ng-template>
+    </div>
+</div>
+<div class="card-deck quiz-card-deck">
+    <div *ngFor="let quiz of availableQuizzes; let i = index" class="quiz-card">
+        <div class="card" *ngIf="quiz!==chosenQuiz">
+            <img class="card-img-top quiz-card-img-top" src="assets/REVATURE-PrimaryLogo-FullClr.svg"
+                alt="Card image cap">
+            <div class="card-body quiz-card-body">
+                <h5 class="card-title quiz-card-title">{{quiz}}</h5>
+                <button class="btn btn-revature-primary btn-font-light" (click)="onTakeQuiz(i)">Take Quiz</button>
+            </div>
+        </div>
+    </div>
+</div>
