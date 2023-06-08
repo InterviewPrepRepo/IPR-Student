@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import User from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ImochaService } from 'src/app/services/imocha-service/imocha.service';
 
@@ -9,13 +11,21 @@ import { ImochaService } from 'src/app/services/imocha-service/imocha.service';
 })
 export class InterviewInviteComponent {
   constructor(private imocha: ImochaService, private auth: AuthService) { }
-
+  userForm = new FormGroup(
+    {
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required)
+    }
+  );
   onInviteLinkClick(): void {
-    this.imocha.inviteCandidate(1238185, 'Minseon Song', 'minseon.song@revature.com').subscribe({
+    console.log("onInvite triggered");
+    let invitee_name = this.userForm.value.name === null || this.userForm.value.name === undefined ? 'Minseon Song' : this.userForm.value.name;
+    let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? 'minseon.song@revature.com' : this.userForm.value.email;
+    this.imocha.inviteCandidate(1238185, invitee_name, invitee_email).subscribe({
       next: ({ testInvitationId, testUrl }) => {
         this.auth.setCurrentUser({
-          name: 'Minseon Song',
-          email: 'minseon.song@revature.com'
+          name: invitee_name,
+          email: invitee_email
         })
         window.open(testUrl, '_self');
       },

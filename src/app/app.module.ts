@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProgressModule } from '@coreui/angular';
+import { ModalModule, ProgressModule } from '@coreui/angular';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 import { QuestionCarouselComponent } from './components/question-carousel/question-carousel.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
@@ -25,7 +25,9 @@ import { InterviewInviteComponent } from './components/interview-invite/intervie
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ProgressModule
+    ProgressModule,
+    ModalModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
