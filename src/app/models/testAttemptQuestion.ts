@@ -6,5 +6,7 @@ export default interface TestAttemptQuestion {
       videoAnswer: {
         videoUrl: string
       }
-    }   
+    }
+    correctAnswer: string
+    givenAnswer: string
   }

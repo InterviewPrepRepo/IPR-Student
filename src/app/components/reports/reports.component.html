@@ -8,6 +8,14 @@
                         <div class="card-body">
                             <h5>Q{{i + 1}}. <span [innerHTML]="q.question"></span></h5>
                             <p>{{q.questionStatus === 'Answered' ? "Score : " + q.score + "/100" : "Not Answered"}}</p>
+                            <div *ngIf="i === currentQuestion - 1">
+                                <div>
+                                    <h6>Candidate Answer:</h6>
+                                    <p>{{q.givenAnswer}}</p>
+                                    <h6>Correct Answer:</h6>
+                                    <p>{{q.correctAnswer}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
