@@ -12,7 +12,7 @@ import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { InterviewInviteComponent } from './components/interview-invite/interview-invite.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReportsComponent } from './components/reports/reports.component';
-
+import { LoadingComponent } from './components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,8 @@ import { ReportsComponent } from './components/reports/reports.component';
     QuizListComponent,
     InterviewInviteComponent,
     NavbarComponent,
-    ReportsComponent
+    ReportsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

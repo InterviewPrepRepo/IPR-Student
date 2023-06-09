@@ -1,5 +1,5 @@
-<!-- <app-loading *ngIf="loading; else questionDetail"></app-loading> -->
-<!-- <ng-template #questionDetail> -->
+<app-loading *ngIf="loading; else questionDetail"></app-loading>
+<ng-template #questionDetail>
     <div class="container mt-2">
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
             <div class="col-8 col-sm-6">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-<!-- </ng-template> -->
+</ng-template>
 <ng-template #noQuestions>
     <div>Attempt still being processed... please check back in a bit!</div>
 </ng-template>

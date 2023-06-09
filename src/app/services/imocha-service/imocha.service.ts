@@ -40,7 +40,6 @@ export class ImochaService {
         }
       }
     }
-
     return testToAttemptsMap;
   }
 
