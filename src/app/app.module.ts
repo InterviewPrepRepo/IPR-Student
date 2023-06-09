@@ -10,6 +10,8 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
 import { QuestionCarouselComponent } from './components/question-carousel/question-carousel.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { InterviewInviteComponent } from './components/interview-invite/interview-invite.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { InterviewInviteComponent } from './components/interview-invite/intervie
     QuestionDetailComponent,
     QuestionCarouselComponent,
     QuizListComponent,
-    InterviewInviteComponent
+    InterviewInviteComponent,
+    NavbarComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
