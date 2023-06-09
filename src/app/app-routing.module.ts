@@ -14,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: QuizListComponent
+    redirectTo: 'quiz',
+    pathMatch: 'full'
   }
 ];
 
