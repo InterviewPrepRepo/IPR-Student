@@ -21,8 +21,9 @@ export class ReportsComponent implements OnInit{
 
   constructor(private imocha: ImochaService, private auth: AuthService, private local: LocalStorageService) {
     const config = this.local.get('ipr_config') as Config;
-    if(config && config.displayCorrectAnswer) {
-      this.displayCorrectAnswer = config.displayCorrectAnswer;
+    console.log('config??', config)
+    if(config) {
+      this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
     }
     else {
       this.displayCorrectAnswer = true;
