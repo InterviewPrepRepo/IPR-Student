@@ -13,6 +13,9 @@ import { InterviewInviteComponent } from './components/interview-invite/intervie
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { SectionChartComponent } from './components/section-chart/section-chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     InterviewInviteComponent,
     NavbarComponent,
     ReportsComponent,
-    LoadingComponent
+    LoadingComponent,
+    SectionChartComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ReactiveFormsModule,
     ProgressModule,
     ModalModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

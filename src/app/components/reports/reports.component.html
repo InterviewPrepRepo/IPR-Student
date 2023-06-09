@@ -28,6 +28,9 @@
             </div>
         </div>
     </div>
+    <div>
+        <app-section-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-chart>
+    </div>
 </ng-template>
 <ng-template #noQuestions>
     <div>Attempt still being processed... please check back in a bit!</div>
