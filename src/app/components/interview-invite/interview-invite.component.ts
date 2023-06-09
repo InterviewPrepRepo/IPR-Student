@@ -23,10 +23,11 @@ export class InterviewInviteComponent {
     let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? 'minseon.song@revature.com' : this.userForm.value.email;
     this.imocha.inviteCandidate(1238185, invitee_name, invitee_email).subscribe({
       next: ({ testInvitationId, testUrl }) => {
-        console.log('herrow', testUrl);
         this.auth.setCurrentUser({
           name: invitee_name,
-          email: invitee_email
+          email: invitee_email,
+          attemptId: testInvitationId,
+          testId: 1238185
         })
         window.open(testUrl, '_blank');
       },
