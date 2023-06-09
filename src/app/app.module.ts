@@ -10,14 +10,19 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
 import { QuestionCarouselComponent } from './components/question-carousel/question-carousel.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { InterviewInviteComponent } from './components/interview-invite/interview-invite.component';
-
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { LoadingComponent } from './components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuestionDetailComponent,
     QuestionCarouselComponent,
     QuizListComponent,
-    InterviewInviteComponent
+    InterviewInviteComponent,
+    NavbarComponent,
+    ReportsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
