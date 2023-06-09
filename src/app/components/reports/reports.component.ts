@@ -16,6 +16,7 @@ export class ReportsComponent {
   videoUrl : string = "";
   questions : TestAttemptQuestion[] = [];
   loading: boolean = true;
+  displayCorrectAnswer: boolean = true;
 
   constructor(private activeRoute : ActivatedRoute, private imocha: ImochaService, private auth: AuthService) { }
 

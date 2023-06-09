@@ -1,6 +1,7 @@
 <app-loading *ngIf="loading; else questionDetail"></app-loading>
 <ng-template #questionDetail>
     <div class="container mt-2">
+        <button class="mb-1 btn btn-revature-primary" (click)="displayCorrectAnswer = !displayCorrectAnswer">Display Correct Answer</button>
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
             <div class="col-8 col-sm-6">
                 <div *ngFor="let q of questions; let i = index">
@@ -12,8 +13,10 @@
                                 <div>
                                     <h6>Candidate Answer:</h6>
                                     <p>{{q.givenAnswer}}</p>
-                                    <h6>Correct Answer:</h6>
-                                    <p>{{q.correctAnswer}}</p>
+                                    <ng-container *ngIf="displayCorrectAnswer">
+                                        <h6>Correct Answer:</h6>
+                                        <p>{{q.correctAnswer}}</p>
+                                    </ng-container>
                                 </div>
                             </div>
                         </div>
