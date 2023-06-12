@@ -9,4 +9,9 @@ export default interface TestAttemptQuestion {
     }
     correctAnswer: string
     givenAnswer: string
+    sectionName: string
+    sectionId: number
+    testName: string
+    testInvitationId: number
+    testId: number
   }

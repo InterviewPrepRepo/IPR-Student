@@ -6,6 +6,10 @@ import User from 'src/app/models/user';
 import { LocalStorageService } from 'angular-web-storage';
 import { Config } from 'src/app/models/iprConfig';
 
+interface ChartData {
+  keys : string[]
+  values: number[]
+}
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -19,15 +23,24 @@ export class ReportsComponent implements OnInit{
   loading: boolean = true;
   displayCorrectAnswer: boolean;
 
+
+  scoreData: ChartData = {
+    //set keys array for the chart to consume
+    keys : [],
+    values : []
+  };
+
+  chartOptions : any = {}; 
+
   constructor(private imocha: ImochaService, private auth: AuthService, private local: LocalStorageService) {
     const config = this.local.get('ipr_config') as Config;
-    console.log('config??', config)
     if(config) {
       this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
     }
     else {
       this.displayCorrectAnswer = true;
     }
+
   }
 
   onDisplayAnswerClick() : void {
@@ -54,6 +67,23 @@ export class ReportsComponent implements OnInit{
           const firstAnsweredQ = this.questions.findIndex(q => q.questionStatus === 'Answered')
           this.switchVideo(firstAnsweredQ);
         }
+
+        //create a map for each section with the score candidate got for the questions in the section
+        const sectionMap: Record<string, number[]> = {}; 
+        this.questions.map((question) => {
+          if(question.sectionName in sectionMap) {
+            sectionMap[question.sectionName].push(question.score);
+          }
+          else {
+            sectionMap[question.sectionName] = [ question.score ];
+          }
+        })
+        
+        //Calculate average score for each section name
+        Object.keys(sectionMap).map((key) => {
+          this.scoreData.keys.push(key);
+          this.scoreData.values.push(sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length);
+        });
 
         this.loading = false;
       })
