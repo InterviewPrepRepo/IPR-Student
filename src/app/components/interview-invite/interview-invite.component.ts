@@ -18,15 +18,15 @@ export class InterviewInviteComponent {
     }
   );
   onInviteLinkClick(): void {
-    console.log("onInvite triggered");
-    let invitee_name = this.userForm.value.name === null || this.userForm.value.name === undefined ? 'Minseon Song' : this.userForm.value.name;
-    let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? 'minseon.song@revature.com' : this.userForm.value.email;
-    this.imocha.inviteCandidate(1238185, invitee_name, invitee_email).subscribe({
+    let invitee_name = this.userForm.value.name === null || this.userForm.value.name === undefined ? '' : this.userForm.value.name;
+    let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? '' : this.userForm.value.email;
+    this.imocha.inviteCandidate(1244440, invitee_name, invitee_email).subscribe({
       next: ({ testInvitationId, testUrl }) => {
-        console.log('herrow', testUrl);
         this.auth.setCurrentUser({
           name: invitee_name,
-          email: invitee_email
+          email: invitee_email,
+          attemptId: testInvitationId,
+          testId: 1244440
         })
         window.open(testUrl, '_blank');
       },
