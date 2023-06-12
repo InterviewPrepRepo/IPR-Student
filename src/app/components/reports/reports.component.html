@@ -5,7 +5,8 @@
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
             <div class="col-8 col-sm-6">
                 <div *ngFor="let q of questions; let i = index">
-                    <div (click)="switchVideo(i)" class="card mb-1" [ngClass]="{'card-active' : i === currentQuestion - 1, 'look-disabled cursor-notallowed': q.questionStatus !== 'Answered', 'cursor-pointer card-hover': q.questionStatus === 'Answered'}" >
+                    <div (click)="switchVideo(i)" class="card mb-1"
+                        [ngClass]="{'card-active' : i === currentQuestion - 1, 'look-disabled cursor-notallowed': q.questionStatus !== 'Answered', 'cursor-pointer card-hover': q.questionStatus === 'Answered'}">
                         <div class="card-body">
                             <h5>Q{{i + 1}}. <span [innerHTML]="q.question"></span></h5>
                             <p>{{q.questionStatus === 'Answered' ? "Score : " + q.score + "/100" : "Not Answered"}}</p>
@@ -23,8 +24,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-6">
+            <div class="col vid-report">
                 <video [src]="videoUrl" controls type="video/webm"></video>
+                <app-section-chart [sectionNames]="scoreData.keys"
+                    [sectionAverages]="scoreData.values"></app-section-chart>
             </div>
         </div>
     </div>
