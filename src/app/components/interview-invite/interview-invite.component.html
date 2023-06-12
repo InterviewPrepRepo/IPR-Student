@@ -1,8 +1,8 @@
 <div class="container">
-    <p>Seems like you know this subject well. Why don't you try a mock interview? </p> <a class="link"
-        [cModalToggle]="userModal.id" cButton>Click
-        here</a>
-    <p>It only takes 15 minutes and you'll get a result right after</p>
+    <p>Seems like you know this subject well. Why don't you try a mock interview? </p>
+    <button type="button" [cModalToggle]="userModal.id" cButton class="btn btn-outline-revature-primary">Click
+        here</button>
+    <p class="top-margin">It only takes 15 minutes and you'll get a result right after</p>
 
     <c-modal #userModal alignment="center" backdrop="static" id="userModal">
         <c-modal-header>
