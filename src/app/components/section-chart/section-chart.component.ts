@@ -5,7 +5,7 @@ import {
   ApexTitleSubtitle,
   ApexChart,
   ApexXAxis,
-  ChartComponent
+  ChartComponent,
 } from "ng-apexcharts";
 
 export type ChartOptions = {
@@ -20,10 +20,10 @@ export type ChartOptions = {
   templateUrl: './section-chart.component.html',
   styleUrls: ['./section-chart.component.scss']
 })
-export class SectionChartComponent implements OnInit{
-  @Input() sectionNames : string[] = [];
-  @Input() sectionAverages : number[] = [];
-  chartOptions : ChartOptions = {
+export class SectionChartComponent implements OnInit {
+  @Input() sectionNames: string[] = [];
+  @Input() sectionAverages: number[] = [];
+  chartOptions: ChartOptions = {
     series: [
       {
         name: "Performance per section",
@@ -64,6 +64,6 @@ export class SectionChartComponent implements OnInit{
       }
     };
   }
-  
+
 }
 
