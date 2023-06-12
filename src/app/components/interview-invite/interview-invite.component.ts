@@ -11,6 +11,7 @@ import { ImochaService } from 'src/app/services/imocha-service/imocha.service';
 })
 export class InterviewInviteComponent {
   constructor(private imocha: ImochaService, private auth: AuthService) { }
+  loading = false;
   userForm = new FormGroup(
     {
       name: new FormControl('', Validators.required),
@@ -18,6 +19,8 @@ export class InterviewInviteComponent {
     }
   );
   onInviteLinkClick(): void {
+    this.loading = true;
+
     let invitee_name = this.userForm.value.name === null || this.userForm.value.name === undefined ? '' : this.userForm.value.name;
     let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? '' : this.userForm.value.email;
     this.imocha.inviteCandidate(1244440, invitee_name, invitee_email).subscribe({
@@ -28,6 +31,7 @@ export class InterviewInviteComponent {
           attemptId: testInvitationId,
           testId: 1244440
         })
+        this.loading = false;
         window.open(testUrl, '_blank');
       },
       error: (err) => {
