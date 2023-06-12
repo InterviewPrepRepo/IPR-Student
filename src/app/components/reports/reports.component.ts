@@ -59,6 +59,7 @@ export class ReportsComponent implements OnInit{
 
   ngOnInit(): void {
     const currentUser : User = this.auth.getCurrentUser();
+    console.log('this is current user', currentUser);
     if(currentUser && currentUser.attemptId) {
       this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
         this.questions = res.result;
@@ -87,6 +88,10 @@ export class ReportsComponent implements OnInit{
 
         this.loading = false;
       })
+    }
+    else {
+      this.loading = false;
+      console.error('could not find test report to render');
     }
   }
 
