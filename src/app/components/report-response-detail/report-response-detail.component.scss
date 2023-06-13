@@ -1,0 +1,27 @@
+.card.card-hover:hover {
+    border: 3pt solid var(--revature-orange);
+}
+
+.card-active {
+    border-width: 3pt;
+    border-color: var(--revature-orange);
+}
+
+.look-disabled {
+    background-color: #eee;
+}
+
+.cursor-notallowed {
+    cursor: not-allowed
+}
+.vid-report{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content:flex-start;
+    align-items:flex-start;
+}
+
+.card-answer-body {
+    max-height: 150pt;
+    overflow-y: scroll;
+}
