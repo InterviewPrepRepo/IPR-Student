@@ -4,6 +4,7 @@
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
             <app-section-chart [sectionNames]="scoreData.keys"
             [sectionAverages]="scoreData.values"></app-section-chart>
+            <app-report-response-detail></app-report-response-detail>
             <div class="col-8 col-sm-6">
                 <button class="mb-1 btn btn-revature-primary" (click)="onDisplayAnswerClick()">Display Correct Answer</button>
                 <div *ngFor="let q of questions; let i = index">
