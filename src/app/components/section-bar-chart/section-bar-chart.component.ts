@@ -6,7 +6,8 @@ import {
   ApexDataLabels,
   ApexXAxis,
   ApexPlotOptions,
-  ApexTitleSubtitle
+  ApexTitleSubtitle,
+  ApexFill
 } from "ng-apexcharts";
 
 export type ChartOptions = {
@@ -15,7 +16,8 @@ export type ChartOptions = {
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
   xaxis: ApexXAxis;
-  title: ApexTitleSubtitle
+  title: ApexTitleSubtitle,
+  fill: ApexFill
 };
 @Component({
   selector: 'app-section-bar-chart',
@@ -28,7 +30,7 @@ export class SectionBarChartComponent implements OnInit {
   public chartOptions: ChartOptions = {
     series: [
       {
-        name: "basic",
+        name: "Section Average",
         data: []
       }
     ],
@@ -49,6 +51,21 @@ export class SectionBarChartComponent implements OnInit {
     },
     xaxis: {
       categories: []
+    },
+    fill: {
+      colors: [
+        function (input: { value: number, seriesIndex: unknown, w: unknown }): string {
+          if (input.value <= 25) {
+            return '#ff0000'
+          } else if (input.value >= 26 && input.value <= 50) {
+            return '#ffa500'
+          } else if (input.value >= 51 && input.value <= 75) {
+            return '#0000FF'
+          } else {
+            return '#00ff00'
+          }
+        }
+      ]
     }
   };
 

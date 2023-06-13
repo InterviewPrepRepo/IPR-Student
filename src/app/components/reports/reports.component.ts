@@ -51,8 +51,14 @@ export class ReportsComponent implements OnInit {
 
         //Calculate average score for each section name
         Object.keys(sectionMap).map((key) => {
-          this.scoreData.keys.push(key);
-          this.scoreData.values.push(sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length);
+          let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
+          //only include sections with positive average
+          if (average > 0) {
+            this.scoreData.keys.push(key);
+            this.scoreData.values.push(average);
+          }
+
+
         });
 
         this.loading = false;
