@@ -1,43 +1,12 @@
-<<<<<<< Updated upstream <app-loading *ngIf="loading; else reportDetail"></app-loading>
-    <ng-template #reportDetail>
-        <div class="container mt-2">
-            <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
-                <app-section-chart [sectionNames]="scoreData.keys"
-                    [sectionAverages]="scoreData.values"></app-section-chart>
-                <app-section-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values">
-                </app-section-bar-chart>
-            </div>
-            <div class="row">
-                <div class="col-8 col-sm-6">
-                    <button class="mb-1 btn btn-revature-primary" (click)="onDisplayAnswerClick()">Display Correct
-                        Answer</button>
-                    <div *ngFor="let q of questions; let i = index">
-                        <div (click)="switchVideo(i)" class="card mb-1"
-                            [ngClass]="{'card-active' : i === currentQuestion - 1, 'look-disabled cursor-notallowed': q.questionStatus !== 'Answered', 'cursor-pointer card-hover': q.questionStatus === 'Answered'}">
-                            <div class="card-body">
-                                <h5>Q{{i + 1}}. <span [innerHTML]="q.question"></span></h5>
-                                <p>{{q.questionStatus === 'Answered' ? scoreStatus(q.questionStatus, q.score) : "Not
-                                    Answered"}}</p>
-                                <div *ngIf="i === currentQuestion - 1">
-                                    <div>
-                                        <h6>Your Answer:</h6>
-                                        <p>{{q.givenAnswer}}</p>
-                                        <ng-container *ngIf="displayCorrectAnswer">
-                                            <h6>Baseline Answer:</h6>
-                                            <p>{{q.correctAnswer}}</p>
-                                        </ng-container>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col vid-report">
-                    <video [src]="videoUrl" controls type="video/webm"></video>
-                </div>
-            </div>
+<app-loading *ngIf="loading; else reportDetail"></app-loading>
+<ng-template #reportDetail>
+    <div class="container mt-2">
+        <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
+            <app-section-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-chart>
+            <app-report-response-detail [questions]="questions"></app-report-response-detail>
         </div>
-    </ng-template>
-    <ng-template #noQuestions>
-        <div>Attempt still being processed... please check back in a bit!</div>
-    </ng-template>
+    </div>
+</ng-template>
+<ng-template #noQuestions>
+    <div>Attempt still being processed... please check back in a bit!</div>
+</ng-template>

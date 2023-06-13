@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="container">
+    <h3>Questions</h3>
+        <button class="m-1 btn btn-revature-primary" (click)="onDisplayAnswerClick()">Display Correct Answer</button>
+        <c-accordion>
+            <div *ngFor="let section of categorizedQuestions | keyvalue">
+                <c-accordion-item #item="cAccordionItem" [visible]="false">
+                    <ng-template cTemplateId="accordionHeaderTemplate">
+                        <button (click)="item.toggleItem()" [collapsed]="!item.visible" cAccordionButton>
+                            {{section.key}}
+                        </button>
+                    </ng-template>
+                    <ng-template cTemplateId="accordionBodyTemplate">
+                        <div class="accordion-body">
+                            <app-report-answer-section [questions]="section.value" [displayCorrectAnswer]="displayCorrectAnswer"></app-report-answer-section>
+                        </div>
+                    </ng-template>
+                </c-accordion-item>
+            </div>
+        </c-accordion>
+    </div>
+</div>

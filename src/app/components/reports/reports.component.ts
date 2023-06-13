@@ -3,13 +3,12 @@ import { ImochaService } from '../../services/imocha-service/imocha.service';
 import TestAttemptQuestion from '../../models/testAttemptQuestion';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import User from 'src/app/models/user';
-import { LocalStorageService } from 'angular-web-storage';
-import { Config } from 'src/app/models/iprConfig';
 
 interface ChartData {
   keys: string[]
   values: number[]
 }
+
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -21,8 +20,6 @@ export class ReportsComponent implements OnInit {
   videoUrl: string = "";
   questions: TestAttemptQuestion[] = [];
   loading: boolean = true;
-  displayCorrectAnswer: boolean;
-
 
   scoreData: ChartData = {
     //set keys array for the chart to consume
@@ -32,42 +29,14 @@ export class ReportsComponent implements OnInit {
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private auth: AuthService, private local: LocalStorageService) {
-    const config = this.local.get('ipr_config') as Config;
-    if (config) {
-      this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
-    }
-    else {
-      this.displayCorrectAnswer = true;
-    }
-
-  }
-
-  onDisplayAnswerClick(): void {
-    this.displayCorrectAnswer = !this.displayCorrectAnswer;
-    let config = this.local.get('ipr_config');
-    if (config) {
-      config.displayCorrectAnswer = this.displayCorrectAnswer;
-    }
-    else {
-      config = {
-        displayCorrectAnswer: this.displayCorrectAnswer
-      };
-    }
-    this.local.set('ipr_config', config);
-  }
+  constructor(private imocha: ImochaService, private auth: AuthService) { }
 
   ngOnInit(): void {
     const currentUser: User = this.auth.getCurrentUser();
-    console.log('this is current user', currentUser);
+
     if (currentUser && currentUser.attemptId) {
       this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
         this.questions = res.result;
-
-        if (this.questions && this.questions.length > 0) {
-          const firstAnsweredQ = this.questions.findIndex(q => q.questionStatus === 'Answered')
-          this.switchVideo(firstAnsweredQ);
-        }
 
         //create a map for each section with the score candidate got for the questions in the section
         const sectionMap: Record<string, number[]> = {};
@@ -94,16 +63,9 @@ export class ReportsComponent implements OnInit {
       console.error('could not find test report to render');
     }
   }
-
-  switchVideo(index: number) {
-    if (this.questions[index] && this.questions[index].questionStatus === 'Answered') {
-      this.currentQuestion = index + 1;
-      this.videoUrl = this.questions[index].candidateAnswer.videoAnswer.videoUrl;
-    }
-  }
-
   scoreStatus(status: string, score: number): string {
     if (score < 0) return "No Score";
     return "Score : " + score + "/100";
   }
+
 }
