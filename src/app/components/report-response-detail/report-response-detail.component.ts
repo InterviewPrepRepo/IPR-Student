@@ -28,8 +28,6 @@ export class ReportResponseDetailComponent implements OnInit {
         this.displayCorrectAnswer = true;
       }
       this.categorizedQuestions = this.util.categorizeByProperty(this.questions, 'sectionName')
-      
-      console.log(this.categorizedQuestions);
     }
   }
 
