@@ -15,6 +15,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SectionChartComponent } from './components/section-chart/section-chart.component';
+import { SectionBarChartComponent } from './components/section-bar-chart/section-bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SectionChartComponent } from './components/section-chart/section-chart.
     NavbarComponent,
     ReportsComponent,
     LoadingComponent,
-    SectionChartComponent
+    SectionChartComponent,
+    SectionBarChartComponent
   ],
   imports: [
     BrowserModule,

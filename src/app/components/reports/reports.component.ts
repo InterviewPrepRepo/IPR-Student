@@ -7,7 +7,7 @@ import { LocalStorageService } from 'angular-web-storage';
 import { Config } from 'src/app/models/iprConfig';
 
 interface ChartData {
-  keys : string[]
+  keys: string[]
   values: number[]
 }
 @Component({
@@ -15,26 +15,26 @@ interface ChartData {
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
-export class ReportsComponent implements OnInit{
-  currentQuestion : number = 1;
+export class ReportsComponent implements OnInit {
+  currentQuestion: number = 1;
 
-  videoUrl : string = "";
-  questions : TestAttemptQuestion[] = [];
+  videoUrl: string = "";
+  questions: TestAttemptQuestion[] = [];
   loading: boolean = true;
   displayCorrectAnswer: boolean;
 
 
   scoreData: ChartData = {
     //set keys array for the chart to consume
-    keys : [],
-    values : []
+    keys: [],
+    values: []
   };
 
-  chartOptions : any = {}; 
+  chartOptions: any = {};
 
   constructor(private imocha: ImochaService, private auth: AuthService, private local: LocalStorageService) {
     const config = this.local.get('ipr_config') as Config;
-    if(config) {
+    if (config) {
       this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
     }
     else {
@@ -43,10 +43,10 @@ export class ReportsComponent implements OnInit{
 
   }
 
-  onDisplayAnswerClick() : void {
+  onDisplayAnswerClick(): void {
     this.displayCorrectAnswer = !this.displayCorrectAnswer;
     let config = this.local.get('ipr_config');
-    if(config) {
+    if (config) {
       config.displayCorrectAnswer = this.displayCorrectAnswer;
     }
     else {
@@ -58,28 +58,28 @@ export class ReportsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const currentUser : User = this.auth.getCurrentUser();
+    const currentUser: User = this.auth.getCurrentUser();
     console.log('this is current user', currentUser);
-    if(currentUser && currentUser.attemptId) {
+    if (currentUser && currentUser.attemptId) {
       this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
         this.questions = res.result;
-  
-        if(this.questions && this.questions.length > 0) {
+
+        if (this.questions && this.questions.length > 0) {
           const firstAnsweredQ = this.questions.findIndex(q => q.questionStatus === 'Answered')
           this.switchVideo(firstAnsweredQ);
         }
 
         //create a map for each section with the score candidate got for the questions in the section
-        const sectionMap: Record<string, number[]> = {}; 
+        const sectionMap: Record<string, number[]> = {};
         this.questions.map((question) => {
-          if(question.sectionName in sectionMap) {
+          if (question.sectionName in sectionMap) {
             sectionMap[question.sectionName].push(question.score);
           }
           else {
-            sectionMap[question.sectionName] = [ question.score ];
+            sectionMap[question.sectionName] = [question.score];
           }
         })
-        
+
         //Calculate average score for each section name
         Object.keys(sectionMap).map((key) => {
           this.scoreData.keys.push(key);
@@ -95,10 +95,15 @@ export class ReportsComponent implements OnInit{
     }
   }
 
-  switchVideo(index : number) {
-    if(this.questions[index] && this.questions[index].questionStatus === 'Answered') {
+  switchVideo(index: number) {
+    if (this.questions[index] && this.questions[index].questionStatus === 'Answered') {
       this.currentQuestion = index + 1;
       this.videoUrl = this.questions[index].candidateAnswer.videoAnswer.videoUrl;
-    } 
+    }
+  }
+
+  scoreStatus(status: string, score: number): string {
+    if (score < 0) return "No Score";
+    return "Score : " + score + "/100";
   }
 }
