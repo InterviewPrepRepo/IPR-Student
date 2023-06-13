@@ -2,8 +2,9 @@
 <ng-template #reportDetail>
     <div class="container mt-2">
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
-            <app-section-chart [sectionNames]="scoreData.keys"
-            [sectionAverages]="scoreData.values"></app-section-chart>
+            <app-section-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values">
+            </app-section-bar-chart>
+            <app-section-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-chart>
             <app-report-response-detail [questions]="questions"></app-report-response-detail>
         </div>
     </div>

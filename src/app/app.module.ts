@@ -15,6 +15,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SectionChartComponent } from './components/section-chart/section-chart.component';
+import { SectionBarChartComponent } from './components/section-bar-chart/section-bar-chart.component';
 import { ReportResponseDetailComponent } from './components/report-response-detail/report-response-detail.component';
 import { ReportAnswerSectionComponent } from './components/report-answer-section/report-answer-section.component';
 
@@ -29,6 +30,7 @@ import { ReportAnswerSectionComponent } from './components/report-answer-section
     ReportsComponent,
     LoadingComponent,
     SectionChartComponent,
+    SectionBarChartComponent,
     ReportResponseDetailComponent,
     ReportAnswerSectionComponent
   ],
