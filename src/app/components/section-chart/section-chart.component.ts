@@ -26,7 +26,7 @@ export class SectionChartComponent implements OnInit {
   chartOptions: ChartOptions = {
     series: [
       {
-        name: "Performance per section",
+        name: "Section Average",
         data: []
       }
     ],
@@ -45,24 +45,6 @@ export class SectionChartComponent implements OnInit {
   ngOnInit(): void {
     this.chartOptions.series[0].data = this.sectionAverages;
     this.chartOptions.xaxis.categories = this.sectionNames;
-    this.chartOptions = {
-      series: [
-        {
-          name: "Performance per section",
-          data: this.sectionAverages
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "radar"
-      },
-      title: {
-        text: "Performance Analysis"
-      },
-      xaxis: {
-        categories: this.sectionNames
-      }
-    };
   }
 
 }

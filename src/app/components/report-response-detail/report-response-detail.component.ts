@@ -13,15 +13,15 @@ export class ReportResponseDetailComponent implements OnInit {
   @Input() questions: TestAttemptQuestion[] = []
 
 
-  displayCorrectAnswer : boolean = true;
-  categorizedQuestions : Record<string, TestAttemptQuestion[]> = {};
+  displayCorrectAnswer: boolean = true;
+  categorizedQuestions: Record<string, TestAttemptQuestion[]> = {};
 
-  constructor(private local:LocalStorageService, private util: UtilService) { }
+  constructor(private local: LocalStorageService, private util: UtilService) { }
   ngOnInit(): void {
-    if(this.questions && this.questions.length > 0) {
+    if (this.questions && this.questions.length > 0) {
 
       const config = this.local.get('ipr_config') as Config;
-      if(config) {
+      if (config) {
         this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
       }
       else {
@@ -31,10 +31,10 @@ export class ReportResponseDetailComponent implements OnInit {
     }
   }
 
-  onDisplayAnswerClick() : void {
+  onDisplayAnswerClick(): void {
     this.displayCorrectAnswer = !this.displayCorrectAnswer;
     let config = this.local.get('ipr_config');
-    if(config) {
+    if (config) {
       config.displayCorrectAnswer = this.displayCorrectAnswer;
     }
     else {
@@ -44,4 +44,5 @@ export class ReportResponseDetailComponent implements OnInit {
     }
     this.local.set('ipr_config', config);
   }
+
 }

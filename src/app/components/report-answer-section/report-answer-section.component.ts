@@ -7,10 +7,10 @@ import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
 })
 export class ReportAnswerSectionComponent implements OnInit {
   @Input() questions: TestAttemptQuestion[] = []
-  @Input() displayCorrectAnswer:  boolean = true;
+  @Input() displayCorrectAnswer: boolean = true;
 
-  currentQuestion : number = 1;
-  videoUrl : string = "";
+  currentQuestion: number = 1;
+  videoUrl: string = "";
 
   constructor() { }
 
@@ -18,13 +18,17 @@ export class ReportAnswerSectionComponent implements OnInit {
     this.switchVideo();
   }
 
-  switchVideo(index? : number) {
-    if(!index) {
+  switchVideo(index?: number) {
+    if (!index) {
       index = this.questions.findIndex(q => q.questionStatus === 'Answered')
     }
-    if(this.questions[index] && this.questions[index].questionStatus === 'Answered') {
+    if (this.questions[index] && this.questions[index].questionStatus === 'Answered') {
       this.currentQuestion = index + 1;
       this.videoUrl = this.questions[index].candidateAnswer.videoAnswer.videoUrl;
     }
+  }
+  scoreStatus(status: string, score: number): string {
+    if (score < 0) return "No Score";
+    return "Score : " + score + "/100";
   }
 }
