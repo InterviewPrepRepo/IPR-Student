@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-md-8 col-sm-6" >
+    <div class="col-md-8 col-sm-6">
         <div *ngFor="let q of questions; let i = index">
             <div (click)="switchVideo(i)" class="card mb-1"
-            [ngClass]="{'card-active' : i === currentQuestion - 1, 'look-disabled cursor-notallowed': q.questionStatus !== 'Answered', 'cursor-pointer card-hover': q.questionStatus === 'Answered'}">
+                [ngClass]="{'card-active' : i === currentQuestion - 1, 'look-disabled cursor-notallowed': q.questionStatus !== 'Answered', 'cursor-pointer card-hover': q.questionStatus === 'Answered'}">
                 <div class="card-body">
                     <h5>Q{{i + 1}}. <span [innerHTML]="q.question"></span></h5>
-                    <p>{{q.questionStatus === 'Answered' ? "Score : " + q.score + "/100" : "Not Answered"}}</p>
+                    <p>{{q.questionStatus === 'Answered' ? scoreStatus(q.questionStatus, q.score) : "Not Answered"}}</p>
                     <div class="card-answer-body" *ngIf="i === currentQuestion - 1">
                         <h6>Your Answer:</h6>
                         <p>{{q.givenAnswer}}</p>

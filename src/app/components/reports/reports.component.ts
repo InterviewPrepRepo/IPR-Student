@@ -69,9 +69,5 @@ export class ReportsComponent implements OnInit {
       console.error('could not find test report to render');
     }
   }
-  scoreStatus(status: string, score: number): string {
-    if (score < 0) return "No Score";
-    return "Score : " + score + "/100";
-  }
 
 }
