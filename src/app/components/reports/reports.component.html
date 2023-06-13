@@ -2,6 +2,7 @@
 <ng-template #reportDetail>
     <div class="container mt-2">
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
+            <h1>You have scored {{testScore | number: '1.2-2'}}%</h1>
             <app-section-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values">
             </app-section-bar-chart>
             <app-section-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-chart>

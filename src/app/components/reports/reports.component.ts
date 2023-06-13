@@ -21,6 +21,7 @@ export class ReportsComponent implements OnInit {
   questions: TestAttemptQuestion[] = [];
   loading: boolean = true;
 
+  testScore : number = 0;
   scoreData: ChartData = {
     //set keys array for the chart to consume
     keys: [],
@@ -37,18 +38,22 @@ export class ReportsComponent implements OnInit {
     if (currentUser && currentUser.attemptId) {
       this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
         this.questions = res.result;
-
         //create a map for each section with the score candidate got for the questions in the section
-        const sectionMap: Record<string, number[]> = {};
+        //and also calculate total score while we're at it
+        const sectionMap: Record<string, number[]> = {}; 
+        let scoreSum = 0;
+        
         this.questions.map((question) => {
-          if (question.sectionName in sectionMap) {
+          scoreSum += question.score;
+          if(question.sectionName in sectionMap) {
             sectionMap[question.sectionName].push(question.score);
           }
           else {
             sectionMap[question.sectionName] = [question.score];
           }
         })
-
+        this.testScore = scoreSum / this.questions.length;
+        
         //Calculate average score for each section name
         Object.keys(sectionMap).map((key) => {
           let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
