@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalModule, ProgressModule } from '@coreui/angular';
+import { ModalModule, ProgressModule, AccordionModule, SharedModule } from '@coreui/angular';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 import { QuestionCarouselComponent } from './components/question-carousel/question-carousel.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
@@ -16,6 +16,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SectionChartComponent } from './components/section-chart/section-chart.component';
 import { ReportResponseDetailComponent } from './components/report-response-detail/report-response-detail.component';
+import { ReportAnswerSectionComponent } from './components/report-answer-section/report-answer-section.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReportResponseDetailComponent } from './components/report-response-deta
     ReportsComponent,
     LoadingComponent,
     SectionChartComponent,
-    ReportResponseDetailComponent
+    ReportResponseDetailComponent,
+    ReportAnswerSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,9 @@ import { ReportResponseDetailComponent } from './components/report-response-deta
     ProgressModule,
     ModalModule,
     BrowserAnimationsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    AccordionModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

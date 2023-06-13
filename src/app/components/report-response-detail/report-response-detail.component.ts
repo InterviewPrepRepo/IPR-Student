@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-web-storage';
 import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
 import { Config } from 'src/app/models/iprConfig';
+import { UtilService } from 'src/app/services/util-service/util.service';
+
 @Component({
   selector: 'app-report-response-detail',
   templateUrl: './report-response-detail.component.html',
@@ -9,32 +11,26 @@ import { Config } from 'src/app/models/iprConfig';
 })
 export class ReportResponseDetailComponent implements OnInit {
   @Input() questions: TestAttemptQuestion[] = []
-  currentQuestion : number = 1;
-  videoUrl : string = "";
+
+
   displayCorrectAnswer : boolean = true;
+  categorizedQuestions : Record<string, TestAttemptQuestion[]> = {};
 
-  constructor(private local:LocalStorageService) {
-    const config = this.local.get('ipr_config') as Config;
-    if(config) {
-      this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
-    }
-    else {
-      this.displayCorrectAnswer = true;
-    }
-  }
-
+  constructor(private local:LocalStorageService, private util: UtilService) { }
   ngOnInit(): void {
     if(this.questions && this.questions.length > 0) {
-      const firstAnsweredQ = this.questions.findIndex(q => q.questionStatus === 'Answered')
-      this.switchVideo(firstAnsweredQ);
-    }
-  }
 
-  switchVideo(index : number) {
-    if(this.questions[index] && this.questions[index].questionStatus === 'Answered') {
-      this.currentQuestion = index + 1;
-      this.videoUrl = this.questions[index].candidateAnswer.videoAnswer.videoUrl;
-    } 
+      const config = this.local.get('ipr_config') as Config;
+      if(config) {
+        this.displayCorrectAnswer = config.displayCorrectAnswer ?? true;
+      }
+      else {
+        this.displayCorrectAnswer = true;
+      }
+      this.categorizedQuestions = this.util.categorizeByProperty(this.questions, 'sectionName')
+      
+      console.log(this.categorizedQuestions);
+    }
   }
 
   onDisplayAnswerClick() : void {
