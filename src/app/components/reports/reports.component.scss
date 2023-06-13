@@ -20,3 +20,8 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.card-answer-body {
+    max-height: 150pt;
+    overflow-y: scroll;
+}
