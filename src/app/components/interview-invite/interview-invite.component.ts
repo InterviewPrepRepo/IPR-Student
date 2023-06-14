@@ -38,14 +38,15 @@ export class InterviewInviteComponent {
           
           //This is a predicate function, which returns boolean
           let attemptExists = (testAttempt : TestInvitation) => {
-            if(testAttempt.email == invitee_email)
+            if(testAttempt.email === invitee_email)
               return true;
             else
               return false;
           }
           
+          const attemptIndex = response.findIndex(attemptExists);
           //We never invited this email to this test before
-          if(response.findIndex(attemptExists) == -1)
+          if(attemptIndex === -1)
           {
             //Fire off invite
             this.imocha.inviteCandidate(1244440, invitee_name, invitee_email).subscribe({
@@ -66,8 +67,9 @@ export class InterviewInviteComponent {
             })
           } //end if block for finding if attempt exists for this test
           else {
+
             //re-attempt
-            this.imocha.reattemptCandidate(1244440).subscribe({
+            this.imocha.reattemptCandidate(response[attemptIndex].testInvitationId).subscribe({
               next: ({testInvitationId, testUrl}) => {
                 this.auth.setCurrentUser({
                   name: invitee_name,
