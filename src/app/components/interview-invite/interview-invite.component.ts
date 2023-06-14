@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import User from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ImochaService } from 'src/app/services/imocha-service/imocha.service';
+import { cilX, cilXCircle} from '@coreui/icons';
 
 @Component({
   selector: 'app-interview-invite',
@@ -10,7 +11,9 @@ import { ImochaService } from 'src/app/services/imocha-service/imocha.service';
   styleUrls: ['./interview-invite.component.scss']
 })
 export class InterviewInviteComponent {
-  constructor(private imocha: ImochaService, private auth: AuthService) { }
+  constructor(private imocha: ImochaService, private auth: AuthService) {
+      }
+  icons = {cilX, cilXCircle};
   loading = false;
   userForm = new FormGroup(
     {
