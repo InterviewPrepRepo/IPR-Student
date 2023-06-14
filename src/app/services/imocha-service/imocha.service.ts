@@ -28,7 +28,7 @@ export class ImochaService {
   }
 
   //Asks Imocha api for a new testAttemptId to re-attempt a test. TestId, name, and email are required.
-  reattemptCandidate(testInvitationId: number, startDate?: Date, endDate?: Date, timeZoneId?: number): Observable<any> {
+  reattemptCandidate(testId : number, testInvitationId: number, startDate?: Date, endDate?: Date, timeZoneId?: number): Observable<any> {
     //Set the start and end date range to 7 days.
     if(!endDate || !startDate) {
       startDate = new Date();
@@ -43,7 +43,7 @@ export class ImochaService {
     //changing the string formatting to comply with iMocha api
     const startDateString = startDate.toISOString().split('.')[0] + 'Z';
     const endDateString = endDate.toISOString().split('.')[0] + 'Z';
-    return this.http.post<any>(this.urlBuilder(`reattempt/${testInvitationId}`), {startDateTime : startDateString, endDateTime: endDateString, timeZoneId});
+    return this.http.post<any>(this.urlBuilder(`reattempt/${testInvitationId}`), {startDateTime : startDateString, endDateTime: endDateString, timeZoneId, testId});
   }
   
   //grabs all attempts and organizes only completed attemps by test ids. 

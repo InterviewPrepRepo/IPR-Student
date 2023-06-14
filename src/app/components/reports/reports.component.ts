@@ -3,6 +3,8 @@ import { ImochaService } from '../../services/imocha-service/imocha.service';
 import TestAttemptQuestion from '../../models/testAttemptQuestion';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import User from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
+import TestInvitation from 'src/app/models/testInvitation';
 
 interface ChartData {
   keys: string[]
@@ -30,11 +32,17 @@ export class ReportsComponent implements OnInit {
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private auth: AuthService) { }
+  constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     const currentUser: User = this.auth.getCurrentUser();
-
+    if(currentUser && currentUser.email) {
+      this.activatedRoute.queryParams.subscribe(({ testId }) => {
+        this.imocha.getTestAttempts(testId).subscribe((res) => {
+          const filtered = res.filter((testAttempt : TestInvitation) => testAttempt.email === currentUser.email)
+        })
+      })
+    }
     if (currentUser && currentUser.attemptId) {
       this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
         this.questions = res.result;

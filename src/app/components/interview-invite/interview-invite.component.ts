@@ -69,7 +69,7 @@ export class InterviewInviteComponent {
           else {
 
             //re-attempt
-            this.imocha.reattemptCandidate(response[attemptIndex].testInvitationId).subscribe({
+            this.imocha.reattemptCandidate(1244440, response[attemptIndex].testInvitationId).subscribe({
               next: ({testInvitationId, testUrl}) => {
                 this.auth.setCurrentUser({
                   name: invitee_name,
