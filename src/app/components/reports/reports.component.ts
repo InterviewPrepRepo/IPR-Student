@@ -42,26 +42,28 @@ export class ReportsComponent implements OnInit {
         //and also calculate total score while we're at it
         const sectionMap: Record<string, number[]> = {};
         let scoreSum = 0;
-
+        let totalSection = 0;
         this.questions.map((question) => {
-          scoreSum += question.score;
-          if (question.sectionName in sectionMap) {
-            sectionMap[question.sectionName].push(question.score);
-          }
-          else {
-            sectionMap[question.sectionName] = [question.score];
+          // don't include negatives count it as does not exist
+          if (question.score >= 0) {
+            scoreSum += question.score;
+            totalSection++;
+            if (question.sectionName in sectionMap) {
+              sectionMap[question.sectionName].push(question.score);
+            }
+            else {
+              sectionMap[question.sectionName] = [question.score];
+            }
           }
         })
-        this.testScore = scoreSum / this.questions.length;
+        this.testScore = scoreSum / totalSection;
 
         //Calculate average score for each section name
         Object.keys(sectionMap).map((key) => {
           let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
           //only include sections with positive average
-          if (average >= 0) {
-            this.scoreData.keys.push(key);
-            this.scoreData.values.push(average);
-          }
+          this.scoreData.keys.push(key);
+          this.scoreData.values.push(average);
         });
         this.loading = false;
       })
