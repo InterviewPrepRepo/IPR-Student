@@ -58,13 +58,13 @@ export class SectionBarChartComponent implements OnInit {
       colors: [
         function (input: { value: number, seriesIndex: unknown, w: unknown }): string {
           if (input.value <= 25) {
-            return '#ff0000'
+            return '#ff4560'
           } else if (input.value >= 26 && input.value <= 50) {
-            return '#ffa500'
+            return '#feb019'
           } else if (input.value >= 51 && input.value <= 75) {
-            return '#0000FF'
+            return '#008FFB'
           } else {
-            return '#00ff00'
+            return '#00e396'
           }
         }
       ]
@@ -79,8 +79,11 @@ export class SectionBarChartComponent implements OnInit {
       fontWeight: 400,
       inverseOrder: true,
       customLegendItems: ['Proficient (76-100)', 'Experienced (51-75)', 'Intermediate (26-50)', 'Beginner (0-25)'],
+      labels: {
+        colors: 'rgb(51, 56, 63)'
+      },
       markers: {
-        fillColors: ['#00ff00', '#0000ff', '#ffa500', '#ff0000']
+        fillColors: ['#00E396', '#008FFB', '#FEB019', '#ff4560']
       }
     }
   };
