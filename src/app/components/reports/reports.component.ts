@@ -44,12 +44,15 @@ export class ReportsComponent implements OnInit {
         let scoreSum = 0;
 
         this.questions.map((question) => {
-          scoreSum += question.score;
-          if (question.sectionName in sectionMap) {
-            sectionMap[question.sectionName].push(question.score);
-          }
-          else {
-            sectionMap[question.sectionName] = [question.score];
+          // don't include negatives count it as does not exist
+          if (question.score >= 0) {
+            scoreSum += question.score;
+            if (question.sectionName in sectionMap) {
+              sectionMap[question.sectionName].push(question.score);
+            }
+            else {
+              sectionMap[question.sectionName] = [question.score];
+            }
           }
         })
         this.testScore = scoreSum / this.questions.length;
