@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import TestInvitation from 'src/app/models/testInvitation';
 import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
 import VideoTest from 'src/app/models/videoTest';
+import { UtilService } from '../util-service/util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import VideoTest from 'src/app/models/videoTest';
 export class ImochaService {
   private baseurl: string = environment.APIBaseURL + 'imocha/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private util: UtilService) { }
 
   organizedTestAttempts: Record<number, TestInvitation[]> = {};
   tests : VideoTest[] = [];
@@ -26,6 +27,21 @@ export class ImochaService {
     return this.http.post<any>(this.urlBuilder('invite'), { testId, email, name });
   }
 
+  //Asks Imocha api for a new testAttemptId to re-attempt a test. TestId, name, and email are required.
+  reattemptCandidate(testId: number, startDate?: Date, endDate?: Date, timeZoneId?: number): Observable<any> {
+    //Set the start and end date range to 7 days.
+    if(!endDate && !startDate) {
+      startDate = new Date();
+      endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 7);
+    }
+    //Set the timeZoneId with util according to the imocha timezone codes
+    if(!timeZoneId) {
+      timeZoneId = this.util.translateTimeZone();
+    }
+    
+    return this.http.post<any>(this.urlBuilder(`reattempt/${testId}`), {startDate, endDate, timeZoneId});
+  }
   
   //grabs all attempts and organizes only completed attemps by test ids. 
   processAttempts(attempts : TestInvitation[]) : Record<number, TestInvitation[]> {
@@ -56,7 +72,7 @@ export class ImochaService {
   //Gets all test attempts from a date range.
   //Automatically sets the date range to the past 30 days, unless given a specific date range
   //Additionally, you can call this method with testId to filter it by a particular testId 
-  getTestAttempts(testId? : number, startDate?: Date, endDate?: Date, ) : Observable<TestInvitation[]> {
+  getTestAttempts(testId? : number, startDate?: Date, endDate?: Date) : Observable<TestInvitation[]> {
     if(!endDate && !startDate) {
       endDate = new Date();
       startDate = new Date(endDate);

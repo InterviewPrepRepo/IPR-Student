@@ -22,4 +22,8 @@ export class UtilService {
 
     return sorted;
   }
+
+  translateTimeZone() : number {
+    return 700;
+  }
 }
