@@ -12,6 +12,9 @@
     <c-modal #userModal alignment="center" backdrop="static" id="userModal">
         <c-modal-header>
             <h5 cModalTitle>Your Details</h5>
+            <button [cModalToggle]="userModal.id" cButtonClose class="btn btn-revature-primary">
+                <svg [cIcon]="icons.cilX" size="xl" width="10"></svg>
+            </button>
         </c-modal-header>
         <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
             <c-modal-body>

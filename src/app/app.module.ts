@@ -18,6 +18,7 @@ import { SectionChartComponent } from './components/section-chart/section-chart.
 import { SectionBarChartComponent } from './components/section-bar-chart/section-bar-chart.component';
 import { ReportResponseDetailComponent } from './components/report-response-detail/report-response-detail.component';
 import { ReportAnswerSectionComponent } from './components/report-answer-section/report-answer-section.component';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,10 @@ import { ReportAnswerSectionComponent } from './components/report-answer-section
     BrowserAnimationsModule,
     NgApexchartsModule,
     AccordionModule,
-    SharedModule
+    SharedModule,
+    IconModule
   ],
-  providers: [],
+  providers: [IconSetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
