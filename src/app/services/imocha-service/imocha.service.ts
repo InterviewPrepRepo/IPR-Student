@@ -40,7 +40,7 @@ export class ImochaService {
       timeZoneId = this.util.translateTimeZone();
     }
     
-    return this.http.post<any>(this.urlBuilder(`reattempt/${testId}`), {startDate, endDate, timeZoneId});
+    return this.http.post<any>(this.urlBuilder(`reattempt/${testId}`), {startDateTime : startDate, endDateTime: endDate, timeZoneId});
   }
   
   //grabs all attempts and organizes only completed attemps by test ids. 
