@@ -7,7 +7,8 @@ import {
   ApexXAxis,
   ApexPlotOptions,
   ApexTitleSubtitle,
-  ApexFill
+  ApexFill,
+  ApexLegend
 } from "ng-apexcharts";
 
 export type ChartOptions = {
@@ -17,7 +18,8 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
   xaxis: ApexXAxis;
   title: ApexTitleSubtitle,
-  fill: ApexFill
+  fill: ApexFill,
+  legend: ApexLegend
 };
 @Component({
   selector: 'app-section-bar-chart',
@@ -66,6 +68,20 @@ export class SectionBarChartComponent implements OnInit {
           }
         }
       ]
+    },
+    legend: {
+      show: true,
+      showForSingleSeries: true,
+      position: 'top',
+      horizontalAlign: 'center',
+      fontSize: '14px',
+      fontFamily: 'Helvetica, Arial',
+      fontWeight: 400,
+      inverseOrder: true,
+      customLegendItems: ['Proficient (76-100)', 'Experienced (51-75)', 'Intermediate (26-50)', 'Beginner (0-25)'],
+      markers: {
+        fillColors: ['#00ff00', '#0000ff', '#ffa500', '#ff0000']
+      }
     }
   };
 
