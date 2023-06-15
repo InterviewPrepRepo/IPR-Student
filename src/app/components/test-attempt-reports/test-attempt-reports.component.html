@@ -1,3 +1,5 @@
+<app-section-chart [chartOptions]="chartOptions" [sectionNames]="['a', 'b', 'c']" [sectionAverages]="[12, 24, 30]"></app-section-chart>
+
 <c-nav variant="tabs">
     <ng-container *ngFor="let attempt of attempts; let i = index" >
         <c-nav-item>
@@ -8,7 +10,7 @@
   
 <c-tab-content #tabContent="cTabContent">
     <ng-container *ngFor="let attempt of attempts; let i = index">
-        <c-tab-pane>
+        <c-tab-pane *ngIf="attempt">
             <app-reports [attemptId]="attempts[i].testInvitationId"></app-reports>
         </c-tab-pane>
     </ng-container>

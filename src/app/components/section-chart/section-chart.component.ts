@@ -1,29 +1,15 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
-
-import {
-  ApexAxisChartSeries,
-  ApexTitleSubtitle,
-  ApexChart,
-  ApexXAxis,
-  ChartComponent,
-} from "ng-apexcharts";
-
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  title: ApexTitleSubtitle;
-  xaxis: ApexXAxis;
-};
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChartOptions } from '../../models/chartOptions';
 
 @Component({
   selector: 'app-section-chart',
   templateUrl: './section-chart.component.html',
   styleUrls: ['./section-chart.component.scss']
 })
-export class SectionChartComponent implements OnInit, OnChanges {
+export class SectionChartComponent implements OnChanges {
   @Input() sectionNames: string[] = [];
   @Input() sectionAverages: number[] = [];
-  chartOptions: ChartOptions = {
+  @Input() chartOptions : ChartOptions = {
     series: [
       {
         name: "Section Average",
@@ -40,15 +26,10 @@ export class SectionChartComponent implements OnInit, OnChanges {
     xaxis: {
       categories: []
     }
+  };
 
-  }
-  ngOnInit(): void {
-    this.chartOptions.series[0].data = this.sectionAverages;
-    this.chartOptions.xaxis.categories = this.sectionNames;
-  }
-
-  ngOnChanges() : void {
-    console.log('chart on changes: something changed');
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
   }
 
 }

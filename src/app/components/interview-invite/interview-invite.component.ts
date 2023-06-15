@@ -17,6 +17,7 @@ export class InterviewInviteComponent {
       }
   icons = {cilX, cilXCircle};
   loading = false;
+  testId : number = 1249369;
   userForm = new FormGroup(
     {
       name: new FormControl('', Validators.required),
@@ -33,7 +34,7 @@ export class InterviewInviteComponent {
     
     if(invitee_email && invitee_name)
     {
-      this.imocha.getTestAttempts(1244440).subscribe({
+      this.imocha.getTestAttempts(this.testId).subscribe({
         next:(response: TestInvitation[]) => {
           
           //This is a predicate function, which returns boolean
@@ -49,14 +50,14 @@ export class InterviewInviteComponent {
           if(attemptIndex === -1)
           {
             //Fire off invite
-            this.imocha.inviteCandidate(1244440, invitee_name, invitee_email).subscribe({
+            this.imocha.inviteCandidate(this.testId, invitee_name, invitee_email).subscribe({
               next: ({testUrl, testInvitationId}) => {
         
                 this.auth.setCurrentUser({
                   name: invitee_name,
                   email: invitee_email,
                   attemptId: testInvitationId,
-                  testId: 1244440
+                  testId: this.testId
                 })
                 this.loading = false;
                 window.open(testUrl, '_blank');
@@ -69,13 +70,13 @@ export class InterviewInviteComponent {
           else {
 
             //re-attempt
-            this.imocha.reattemptCandidate(1244440, response[attemptIndex].testInvitationId).subscribe({
+            this.imocha.reattemptCandidate(this.testId, response[attemptIndex].testInvitationId).subscribe({
               next: ({testInvitationId, testUrl}) => {
                 this.auth.setCurrentUser({
                   name: invitee_name,
                   email: invitee_email,
                   attemptId: testInvitationId,
-                  testId: 1244440
+                  testId: this.testId
                 })
                 this.loading = false;
                 window.open(testUrl, '_blank');
