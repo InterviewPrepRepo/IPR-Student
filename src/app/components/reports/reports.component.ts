@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ImochaService } from '../../services/imocha-service/imocha.service';
 import TestAttemptQuestion from '../../models/testAttemptQuestion';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
@@ -17,12 +17,12 @@ interface ChartData {
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
+  @Input() attemptId: number = 0;
+  
   currentQuestion: number = 1;
-
   videoUrl: string = "";
   questions: TestAttemptQuestion[] = [];
   loading: boolean = true;
-
   testScore: number = 0;
   scoreData: ChartData = {
     //set keys array for the chart to consume
@@ -32,19 +32,10 @@ export class ReportsComponent implements OnInit {
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute) { }
+  constructor(private imocha: ImochaService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const currentUser: User = this.auth.getCurrentUser();
-    if(currentUser && currentUser.email) {
-      this.activatedRoute.queryParams.subscribe(({ testId }) => {
-        this.imocha.getTestAttempts(testId).subscribe((res) => {
-          const filtered = res.filter((testAttempt : TestInvitation) => testAttempt.email === currentUser.email)
-        })
-      })
-    }
-    if (currentUser && currentUser.attemptId) {
-      this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
+      this.imocha.getQuestionsByTestAttemptId(this.attemptId).subscribe((res) => {
         this.questions = res.result;
         //create a map for each section with the score candidate got for the questions in the section
         //and also calculate total score while we're at it
@@ -75,11 +66,6 @@ export class ReportsComponent implements OnInit {
         });
         this.loading = false;
       })
-    }
-    else {
-      this.loading = false;
-      console.error('could not find test report to render');
-    }
   }
 
 }

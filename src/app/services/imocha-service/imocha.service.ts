@@ -88,7 +88,7 @@ export class ImochaService {
     })
   }
 
-  //This method gets the data regarding test attempt itself. Also includes total cumulatie score
+  //This method gets the data regarding test attempt itself. Also includes total cumulative score
   getTestAttemptByTestAttemptId(testAttemptId: number) : Observable<TestInvitation> {
     return this.http.get<TestInvitation>(this.urlBuilder(`reports/${testAttemptId}`))
   }
