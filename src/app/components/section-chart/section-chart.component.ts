@@ -31,7 +31,7 @@ export class SectionChartComponent implements OnInit, OnChanges {
       }
     ],
     chart: {
-      height: 350,
+      height: 450,
       type: "radar"
     },
     title: {

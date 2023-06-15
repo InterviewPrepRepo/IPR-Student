@@ -13,7 +13,7 @@ import TestInvitation from 'src/app/models/testInvitation';
 export class TestAttemptReportsComponent {
 
   constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute) {}
-  activeTabIndex = 2;
+  activeTabIndex = 0;
   attempts : TestInvitation[] = [];
   ngOnInit(): void {
     const currentUser: User = this.auth.getCurrentUser();
@@ -30,5 +30,6 @@ export class TestAttemptReportsComponent {
 
   activeTab(i : number): void {
     this.activeTabIndex = i;
+    window.dispatchEvent(new Event('resize'))
   }
 }
