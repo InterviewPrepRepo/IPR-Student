@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ImochaService } from '../../services/imocha-service/imocha.service';
 import TestAttemptQuestion from '../../models/testAttemptQuestion';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import User from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
+import TestInvitation from 'src/app/models/testInvitation';
+import { UtilService } from 'src/app/services/util-service/util.service';
 
 interface ChartData {
   keys: string[]
@@ -15,13 +18,14 @@ interface ChartData {
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
+  @Input() attemptId: number = 0;
+  
+  
   currentQuestion: number = 1;
-
   videoUrl: string = "";
   questions: TestAttemptQuestion[] = [];
   loading: boolean = true;
-
-  testScore : number = 0;
+  testScore: number = 0;
   scoreData: ChartData = {
     //set keys array for the chart to consume
     keys: [],
@@ -30,49 +34,40 @@ export class ReportsComponent implements OnInit {
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private auth: AuthService) { }
+  constructor(private imocha: ImochaService, private activatedRoute: ActivatedRoute, private util : UtilService) { }
 
   ngOnInit(): void {
-    const currentUser: User = this.auth.getCurrentUser();
-
-    if (currentUser && currentUser.attemptId) {
-      this.imocha.getQuestionsByTestAttemptId(currentUser.attemptId).subscribe((res) => {
+      this.imocha.getQuestionsByTestAttemptId(this.attemptId).subscribe((res) => {
         this.questions = res.result;
         //create a map for each section with the score candidate got for the questions in the section
         //and also calculate total score while we're at it
-        const sectionMap: Record<string, number[]> = {}; 
+        const sectionMap: Record<string, number[]> = {};
         let scoreSum = 0;
-        
+        let totalSection = 0;
         this.questions.map((question) => {
-          scoreSum += question.score;
-          if(question.sectionName in sectionMap) {
-            sectionMap[question.sectionName].push(question.score);
-          }
-          else {
-            sectionMap[question.sectionName] = [question.score];
+          // don't include negatives count it as does not exist
+          if (question.score >= 0) {
+            scoreSum += question.score;
+            totalSection++;
+            if (question.sectionName in sectionMap) {
+              sectionMap[question.sectionName].push(question.score);
+            }
+            else {
+              sectionMap[question.sectionName] = [question.score];
+            }
           }
         })
-        this.testScore = scoreSum / this.questions.length;
-        
+        this.testScore = scoreSum / totalSection;
+
         //Calculate average score for each section name
         Object.keys(sectionMap).map((key) => {
           let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
           //only include sections with positive average
-          if (average > 0) {
-            this.scoreData.keys.push(key);
-            this.scoreData.values.push(average);
-          }
-
-
+          this.scoreData.keys.push(key);
+          this.scoreData.values.push(this.util.truncateToSignificantDigit(average));
         });
-
         this.loading = false;
       })
-    }
-    else {
-      this.loading = false;
-      console.error('could not find test report to render');
-    }
   }
 
 }

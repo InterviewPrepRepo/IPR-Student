@@ -18,6 +18,10 @@ import { SectionChartComponent } from './components/section-chart/section-chart.
 import { SectionBarChartComponent } from './components/section-bar-chart/section-bar-chart.component';
 import { ReportResponseDetailComponent } from './components/report-response-detail/report-response-detail.component';
 import { ReportAnswerSectionComponent } from './components/report-answer-section/report-answer-section.component';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
+import { NavModule, TabsModule } from '@coreui/angular';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { ReportAnswerSectionComponent } from './components/report-answer-section
     SectionChartComponent,
     SectionBarChartComponent,
     ReportResponseDetailComponent,
-    ReportAnswerSectionComponent
+    ReportAnswerSectionComponent,
+    TestAttemptReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +50,12 @@ import { ReportAnswerSectionComponent } from './components/report-answer-section
     BrowserAnimationsModule,
     NgApexchartsModule,
     AccordionModule,
-    SharedModule
+    SharedModule,
+    IconModule,
+    NavModule, 
+    TabsModule
   ],
-  providers: [],
+  providers: [IconSetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

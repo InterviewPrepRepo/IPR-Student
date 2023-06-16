@@ -6,11 +6,11 @@
                 <div class="card-body">
                     <h5>Q{{i + 1}}. <span [innerHTML]="q.question"></span></h5>
                     <p>{{q.questionStatus === 'Answered' ? scoreStatus(q.questionStatus, q.score) : "Not Answered"}}</p>
-                    <div class="card-answer-body" *ngIf="i === currentQuestion - 1">
-                        <h6>Your Answer:</h6>
+                    <div class="card-answer-body" *ngIf="i === currentQuestion - 1 && q.score !== 0">
+                        <h6 class="header">Your Answer:</h6>
                         <p>{{q.givenAnswer}}</p>
                         <ng-container *ngIf="displayCorrectAnswer">
-                            <h6>Baseline Answer:</h6>
+                            <h6 class="header">Baseline Answer:</h6>
                             <p>{{q.correctAnswer}}</p>
                         </ng-container>
                     </div>
