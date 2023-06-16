@@ -1,7 +1,7 @@
 <div class="row">
     <div class="container">
         <h6 class="header">Questions</h6>
-        <button class="m-1 btn btn-revature-primary" (click)="onDisplayAnswerClick()">Display Correct Answer</button>
+        <button class="m-1 btn btn-revature-primary" (click)="onDisplayAnswerClick()">Display Baseline Answer</button>
         <c-accordion>
             <div *ngFor="let section of categorizedQuestions | keyvalue">
                 <c-accordion-item #item="cAccordionItem" [visible]="false">
