@@ -16,9 +16,9 @@ export class InterviewInviteComponent {
   constructor(private imocha: ImochaService, private auth: AuthService) {
       }
   
-  testId = 1249369;
+  testId : number = 1249369;
   icons = {cilX, cilXCircle};
-  loading = false;
+  loading : boolean = false;
   userForm = new FormGroup(
     {
       name: new FormControl('', Validators.required),
@@ -28,6 +28,7 @@ export class InterviewInviteComponent {
 
   //this method is used when the user submit the interview invitation modal with their username and email
   onInviteLinkClick(): void {
+    console.log('on invite link click')
     this.loading = true;
 
     let invitee_name = this.userForm.value.name === null || this.userForm.value.name === undefined ? '' : this.userForm.value.name;

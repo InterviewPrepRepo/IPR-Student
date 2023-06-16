@@ -1,15 +1,19 @@
-<c-nav variant="tabs">
-    <ng-container *ngFor="let attempt of attempts; let i = index" >
-        <c-nav-item>
-            <a (click)="activeTab(i)" class="reva-orange" [active]="activeTabIndex == i" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="i" cNavLink>Attempt {{i + 1}}</a>
-        </c-nav-item>
-    </ng-container>
-</c-nav>
-  
-<c-tab-content #tabContent="cTabContent">
-    <ng-container *ngFor="let attempt of attempts; let i = index">
-        <c-tab-pane>
-            <app-reports [attemptId]="attempts[i].testInvitationId"></app-reports>
-        </c-tab-pane>
-    </ng-container>
-</c-tab-content>
+<app-loading *ngIf="loading; else reports"></app-loading>
+
+<ng-template #reports>
+    <c-nav variant="tabs">
+        <ng-container *ngFor="let attempt of attempts; let i = index" >
+            <c-nav-item>
+                <a (click)="activeTab(i)" class="reva-orange" [active]="activeTabIndex == i" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="i" cNavLink>Attempt {{i + 1}}</a>
+            </c-nav-item>
+        </ng-container>
+    </c-nav>
+     
+    <c-tab-content #tabContent="cTabContent">
+        <ng-container *ngFor="let attempt of attempts; let i = index">
+            <c-tab-pane>
+                <app-reports [attemptId]="attempts[i].testInvitationId"></app-reports>
+            </c-tab-pane>
+        </ng-container>
+    </c-tab-content>
+</ng-template>

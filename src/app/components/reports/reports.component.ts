@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 import User from 'src/app/models/user';
 import { ActivatedRoute } from '@angular/router';
 import TestInvitation from 'src/app/models/testInvitation';
+import { UtilService } from 'src/app/services/util-service/util.service';
 
 interface ChartData {
   keys: string[]
@@ -19,6 +20,7 @@ interface ChartData {
 export class ReportsComponent implements OnInit {
   @Input() attemptId: number = 0;
   
+  
   currentQuestion: number = 1;
   videoUrl: string = "";
   questions: TestAttemptQuestion[] = [];
@@ -32,7 +34,7 @@ export class ReportsComponent implements OnInit {
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private activatedRoute: ActivatedRoute) { }
+  constructor(private imocha: ImochaService, private activatedRoute: ActivatedRoute, private util : UtilService) { }
 
   ngOnInit(): void {
       this.imocha.getQuestionsByTestAttemptId(this.attemptId).subscribe((res) => {
@@ -62,7 +64,7 @@ export class ReportsComponent implements OnInit {
           let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
           //only include sections with positive average
           this.scoreData.keys.push(key);
-          this.scoreData.values.push(average);
+          this.scoreData.values.push(this.util.truncateToSignificantDigit(average));
         });
         this.loading = false;
       })

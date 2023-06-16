@@ -15,17 +15,18 @@ export class TestAttemptReportsComponent {
   constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute) {}
   activeTabIndex = 0;
   attempts : TestInvitation[] = [];
+  loading: boolean = true;
   ngOnInit(): void {
     const currentUser: User = this.auth.getCurrentUser();
     if(currentUser && currentUser.email) {
       this.activatedRoute.queryParams.subscribe(({ testId }) => {
         this.imocha.getTestAttempts(testId).subscribe((res) => {
           this.attempts = res.filter((testAttempt : TestInvitation) => testAttempt.email === currentUser.email)
-
-          console.log(this.attempts);
+          this.loading = false;
         })
       })
     }
+    
   }
 
   activeTab(i : number): void {

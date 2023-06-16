@@ -26,4 +26,8 @@ export class UtilService {
   translateTimeZone() : number {
     return 700;
   }
+
+  truncateToSignificantDigit(value: number, digit: number = 4) : number {
+    return parseFloat(value.toPrecision(digit));
+  }
 }
