@@ -21,6 +21,7 @@ import { ReportAnswerSectionComponent } from './components/report-answer-section
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
 import { NavModule, TabsModule } from '@coreui/angular';
+import { InvitePageComponent } from './components/invite-page/invite-page.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NavModule, TabsModule } from '@coreui/angular';
     SectionBarChartComponent,
     ReportResponseDetailComponent,
     ReportAnswerSectionComponent,
-    TestAttemptReportsComponent
+    TestAttemptReportsComponent,
+    InvitePageComponent
   ],
   imports: [
     BrowserModule,
