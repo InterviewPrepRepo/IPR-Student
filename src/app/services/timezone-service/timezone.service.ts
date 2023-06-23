@@ -644,7 +644,7 @@ export class TimezoneService {
     if(key in this.timezoneLookupTable) {
       return this.timezoneLookupTable[key]
     }else{
-      return 120;
+      return 500;
     }
   }
 
