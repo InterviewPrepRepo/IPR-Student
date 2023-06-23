@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { cilX, cilXCircle } from '@coreui/icons';
 import { InviteService } from 'src/app/services/invite-service/invite.service';
 
-
 @Component({
-  selector: 'app-interview-invite',
-  templateUrl: './interview-invite.component.html',
-  styleUrls: ['./interview-invite.component.scss']
+  selector: 'app-invite-page',
+  templateUrl: './invite-page.component.html',
+  styleUrls: ['./invite-page.component.scss']
 })
-export class InterviewInviteComponent {
+export class InvitePageComponent {
   constructor(private invite: InviteService) {
   }
-
   testId: number = 1249369;
-  icons = { cilX, cilXCircle };
   loading: boolean = false;
   userForm = new FormGroup(
     {
@@ -22,8 +18,6 @@ export class InterviewInviteComponent {
       email: new FormControl('', Validators.required)
     }
   );
-
-  //this method is used when the user submit the interview invitation modal with their username and email
   onInviteLinkClick(): void {
     this.loading = true;
 
@@ -35,8 +29,7 @@ export class InterviewInviteComponent {
         (result) => {
           console.log(result);
           this.loading = result;
-        }
-      )
+        })
     } //end if block for form validation
     else {
       this.loading = false;

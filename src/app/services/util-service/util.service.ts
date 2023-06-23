@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { TimezoneService } from '../timezone-service/timezone.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilService {
 
-  constructor() { }
+  
+
+  constructor(private tzs: TimezoneService) { }
 
   //Takes any array collection of objects and creates a map that organizes the collection according to the value of the key provided. Used often in many components so made a util here
   categorizeByProperty(collection: any[], propName: string) : Record<string, any[]> {
@@ -23,8 +26,8 @@ export class UtilService {
     return sorted;
   }
 
-  translateTimeZone() : number {
-    return 700;
+  translateTimeZone(key: string) : number {
+    return this.tzs.lookupTimezone(key);
   }
 
   truncateToSignificantDigit(value: number, digit: number = 4) : number {
