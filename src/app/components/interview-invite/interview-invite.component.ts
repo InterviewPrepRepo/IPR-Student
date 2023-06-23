@@ -61,8 +61,11 @@ export class InterviewInviteComponent {
                   attemptId: testInvitationId,
                   testId: this.testId
                 })
+                //Changing url to coding.revature.com
+                testUrl = testUrl.replace("test.imocha.io", "coding.revature.com");
+                
                 this.loading = false;
-                window.open(testUrl, '_blank');
+                window.open(testUrl, '_self');
               },
               error: (err) => {
                 console.error(err);
@@ -80,8 +83,11 @@ export class InterviewInviteComponent {
                   attemptId: testInvitationId,
                   testId: this.testId
                 })
+                //Changing URL to coding.revature.com
+                testUrl = testUrl.replace("test.imocha.io", "coding.revature.com")
+                
                 this.loading = false;
-                window.open(testUrl, '_blank');
+                window.open(testUrl, '_self');
               },
               error: (err) => {
                 console.log(err);
