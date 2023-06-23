@@ -25,8 +25,11 @@ export class InvitePageComponent {
     let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? '' : this.userForm.value.email;
 
     if (invitee_email && invitee_name) {
-      this.invite.onInvite(this.testId, invitee_email, invitee_name);
-      this.loading = false;
+      this.invite.onInvite(this.testId, invitee_email, invitee_name).subscribe(
+        (result) => {
+          console.log(result);
+          this.loading = result;
+        })
     } //end if block for form validation
     else {
       this.loading = false;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ImochaService } from '../imocha-service/imocha.service';
 import TestInvitation from 'src/app/models/testInvitation';
 import { AuthService } from '../auth-service/auth.service';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,8 @@ export class InviteService {
 
   constructor(private imocha: ImochaService, private auth: AuthService) { }
 
-  onInvite(testId: number, invitee_email: string, invitee_name: string): void {
+  onInvite(testId: number, invitee_email: string, invitee_name: string): Observable<boolean> {
+    const loading = new BehaviorSubject(true);
     this.imocha.getTestAttempts(testId).subscribe({
       next: (response: TestInvitation[]) => {
 
@@ -29,7 +30,6 @@ export class InviteService {
           //Fire off invite
           this.imocha.inviteCandidate(testId, invitee_name, invitee_email).subscribe({
             next: ({ testUrl, testInvitationId }) => {
-
               this.auth.setCurrentUser({
                 name: invitee_name,
                 email: invitee_email,
@@ -39,9 +39,11 @@ export class InviteService {
               //Changing url to coding.revature.com
               testUrl = testUrl.replace("test.imocha.io", "coding.revature.com");
               window.open(testUrl, '_self');
+              loading.next(false);
             },
             error: (err) => {
               console.error(err);
+              loading.next(false);
             }
           })
         } //end if block for finding if attempt exists for this test
@@ -59,16 +61,21 @@ export class InviteService {
               //Changing URL to coding.revature.com
               testUrl = testUrl.replace("test.imocha.io", "coding.revature.com")
               window.open(testUrl, '_self');
+              loading.next(false);
             },
             error: (err) => {
               console.log(err);
+              loading.next(false);
             }
           })
         } //end else block
       },
       error: (err) => {
         console.log(err);
+        loading.next(false);
       }
     })
+
+    return loading;
   }
 }

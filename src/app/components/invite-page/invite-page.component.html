@@ -1,5 +1,5 @@
 <div class="container">
-    <div *ngIf="!this.loading else loadingComponent" class="details-form">
+    <div *ngIf="!loading else loadingComponent" class="details-form">
         <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
             <div class="form-group">
                 <label for="name">Name: </label>
