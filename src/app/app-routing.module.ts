@@ -7,20 +7,12 @@ import { TestAttemptReportsComponent } from './components/test-attempt-reports/t
 
 const routes: Routes = [
   {
-    path: 'quiz',
-    component: QuizListComponent
-  },
-  {
     path: 'report',
     component: TestAttemptReportsComponent
   },
   {
-    path: 'bar',
-    component: SectionBarChartComponent
-  },
-  {
     path: '',
-    redirectTo: 'quiz',
+    redirectTo: 'report',
     pathMatch: 'full'
   }
 ];
