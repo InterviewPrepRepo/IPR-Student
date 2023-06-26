@@ -10,7 +10,6 @@ import { InviteService } from 'src/app/services/invite-service/invite.service';
 export class InvitePageComponent {
   constructor(private invite: InviteService) {
   }
-  testId: number = 1249369;
   loading: boolean = false;
   userForm = new FormGroup(
     {
@@ -23,7 +22,7 @@ export class InvitePageComponent {
     this.loading = true;
 
     if (this.userForm.valid) {
-      this.invite.onInvite(this.testId, this.userForm.value.email!, this.userForm.value.name!).subscribe(
+      this.invite.onInvite(this.userForm.value.email!, this.userForm.value.name!).subscribe(
         (result) => {
           this.loading = result;
         })
