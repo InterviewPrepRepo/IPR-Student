@@ -49,11 +49,17 @@ export class ReportsComponent implements OnInit {
           if (question.score >= 0) {
             scoreSum += question.score;
             totalSection++;
+            //calculating score
+            if(!question.candidateAnswer.videoAnswer) {
+              //this is imocha calculated coding questions
+              question.score = (question.score / question.points) * 100
+            }
+
             if (question.sectionName in sectionMap) {
-              sectionMap[question.sectionName].push(question.score);
+              sectionMap[question.sectionName].push(question.score);              
             }
             else {
-              sectionMap[question.sectionName] = [question.score];
+              sectionMap[question.sectionName] = [ question.score ];
             }
           }
         })

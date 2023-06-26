@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InviteService } from 'src/app/services/invite-service/invite.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-
+  constructor(public invite : InviteService) { }
 }

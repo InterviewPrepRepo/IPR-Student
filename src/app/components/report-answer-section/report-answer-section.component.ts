@@ -22,9 +22,12 @@ export class ReportAnswerSectionComponent implements OnInit {
     if (!index) {
       index = this.questions.findIndex(q => q.questionStatus === 'Answered')
     }
-    if (this.questions[index] && this.questions[index].questionStatus === 'Answered') {
+    if (this.questions[index] && this.questions[index].questionStatus === 'Answered' && this.questions[index].candidateAnswer.videoAnswer) {
       this.currentQuestion = index + 1;
       this.videoUrl = this.questions[index].candidateAnswer.videoAnswer.videoUrl;
+    }
+    else {
+      this.videoUrl = "";
     }
   }
   scoreStatus(status: string, score: number): string {
