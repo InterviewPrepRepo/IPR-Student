@@ -15,22 +15,19 @@ export class InvitePageComponent {
   userForm = new FormGroup(
     {
       name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required)
+      email: new FormControl('', [Validators.required, Validators.email])
     }
   );
   onInviteLinkClick(): void {
+    this.userForm.markAllAsTouched();
     this.loading = true;
 
-    let invitee_name = this.userForm.value.name === null || this.userForm.value.name === undefined ? '' : this.userForm.value.name;
-    let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? '' : this.userForm.value.email;
-
-    if (invitee_email && invitee_name) {
-      this.invite.onInvite(this.testId, invitee_email, invitee_name).subscribe(
+    if (this.userForm.valid) {
+      this.invite.onInvite(this.testId, this.userForm.value.email!, this.userForm.value.name!).subscribe(
         (result) => {
-          console.log(result);
           this.loading = result;
         })
-    } //end if block for form validation
+    }
     else {
       this.loading = false;
     }

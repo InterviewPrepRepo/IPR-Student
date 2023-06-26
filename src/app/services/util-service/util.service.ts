@@ -5,9 +5,6 @@ import { TimezoneService } from '../timezone-service/timezone.service';
   providedIn: 'root'
 })
 export class UtilService {
-
-  
-
   constructor(private tzs: TimezoneService) { }
 
   //Takes any array collection of objects and creates a map that organizes the collection according to the value of the key provided. Used often in many components so made a util here

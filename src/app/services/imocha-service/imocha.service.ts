@@ -38,6 +38,7 @@ export class ImochaService {
     //Set the timeZoneId with util according to the imocha timezone codes
     if(!timeZoneId) {
       timeZoneId = this.util.translateTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+      console.log("timeZoneId", timeZoneId);
     }
     
     //changing the string formatting to comply with iMocha api
