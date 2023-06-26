@@ -5,6 +5,9 @@ export default interface TestAttemptQuestion {
     candidateAnswer: {
       videoAnswer: {
         videoUrl: string
+      }, 
+      codingQuestionData: {
+        candidateCode: string
       }
     }
     correctAnswer: string
@@ -14,4 +17,5 @@ export default interface TestAttemptQuestion {
     testName: string
     testInvitationId: number
     testId: number
+    points: number
   }

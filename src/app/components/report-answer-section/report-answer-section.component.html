@@ -8,17 +8,22 @@
                     <p>{{q.questionStatus === 'Answered' ? scoreStatus(q.questionStatus, q.score) : "Not Answered"}}</p>
                     <div class="card-answer-body" *ngIf="i === currentQuestion - 1 && q.score !== 0">
                         <h6 class="header">Your Answer:</h6>
-                        <p>{{q.givenAnswer}}</p>
-                        <ng-container *ngIf="displayCorrectAnswer">
+                        <p *ngIf="q.givenAnswer">{{q.givenAnswer}}</p>
+                        <ng-container *ngIf="q.candidateAnswer.codingQuestionData?.candidateCode">
+                            <pre><code>{{q.candidateAnswer.codingQuestionData.candidateCode}}</code></pre>
+                        </ng-container>
+                        <ng-container *ngIf="displayCorrectAnswer && q.candidateAnswer.videoAnswer">
                             <h6 class="header">Baseline Answer:</h6>
                             <p>{{q.correctAnswer}}</p>
                         </ng-container>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4 col-sm-6 vid-report">
-        <video [src]="videoUrl" controls type="video/webm"></video>
+        <video *ngIf="videoUrl" [src]="videoUrl" controls type="video/webm"></video>
     </div>
+    
 </div>
