@@ -33,7 +33,6 @@ export class InterviewInviteComponent {
     if (invitee_email && invitee_name) {
       this.invite.onInvite(this.testId, invitee_email, invitee_name).subscribe(
         (result) => {
-          console.log(result);
           this.loading = result;
         }
       )

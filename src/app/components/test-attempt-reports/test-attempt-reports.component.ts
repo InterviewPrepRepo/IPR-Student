@@ -18,13 +18,12 @@ export class TestAttemptReportsComponent {
   loading: boolean = false;
   ngOnInit(): void {
     const currentUser: User = this.auth.getCurrentUser();
-    console.log('currentuser', currentUser);
     if(currentUser && currentUser.email) {
       this.loading = true;
       this.activatedRoute.queryParams.subscribe(({ testId }) => {
+        if(!testId) this.router.navigate(['invite'])
         this.imocha.getTestAttempts(testId).subscribe((res) => {
           this.attempts = res.filter((testAttempt : TestInvitation) => testAttempt.email === currentUser.email)
-          console.log(this.attempts);
           this.loading = false;
         })
       })
@@ -32,7 +31,6 @@ export class TestAttemptReportsComponent {
     else {
       this.router.navigate(['invite'])
     }
-    
   }
 
   activeTab(i : number): void {

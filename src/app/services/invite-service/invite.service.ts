@@ -64,14 +64,14 @@ export class InviteService {
               loading.next(false);
             },
             error: (err) => {
-              console.log(err);
+              console.error(err);
               loading.next(false);
             }
           })
         } //end else block
       },
       error: (err) => {
-        console.log(err);
+        console.error(err);
         loading.next(false);
       }
     })
