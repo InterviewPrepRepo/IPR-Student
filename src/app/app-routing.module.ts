@@ -5,23 +5,23 @@ import { InvitePageComponent } from './components/invite-page/invite-page.compon
 import { AuthService } from './services/auth-service/auth.service';
 
 
-// const canActivateReport: CanActivateFn =
-//   (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-//     const router = inject(Router);
-//     if (inject(AuthService).isAuthenticated()) {
-//       return true;
-//     } else {
-//       router.navigate(['invite']);
-//       return false;
-//     }
-//   };
+const canActivateReport: CanActivateFn =
+  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    const router = inject(Router);
+    if (inject(AuthService).isAuthenticated()) {
+      return true;
+    } else {
+      router.navigate(['invite']);
+      return false;
+    }
+  };
 
 
 const routes: Routes = [
   {
     path: 'report',
     component: TestAttemptReportsComponent,
-    // canActivate: [canActivateReport]
+    canActivate: [canActivateReport]
   },
   {
     path: 'invite',
