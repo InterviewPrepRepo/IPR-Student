@@ -13,7 +13,6 @@ export class InterviewInviteComponent {
   constructor(private invite: InviteService) {
   }
 
-  testId: number = 1249369;
   icons = { cilX, cilXCircle };
   loading: boolean = false;
   userForm = new FormGroup(
@@ -31,7 +30,7 @@ export class InterviewInviteComponent {
     let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? '' : this.userForm.value.email;
 
     if (invitee_email && invitee_name) {
-      this.invite.onInvite(this.testId, invitee_email, invitee_name).subscribe(
+      this.invite.onInvite(invitee_email, invitee_name).subscribe(
         (result) => {
           this.loading = result;
         }

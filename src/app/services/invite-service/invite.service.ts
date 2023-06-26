@@ -11,9 +11,11 @@ export class InviteService {
 
   constructor(private imocha: ImochaService, private auth: AuthService) { }
 
-  onInvite(testId: number, invitee_email: string, invitee_name: string): Observable<boolean> {
+  readonly testId : number = 1250027;
+  
+  onInvite(invitee_email: string, invitee_name: string): Observable<boolean> {
     const loading = new BehaviorSubject(true);
-    this.imocha.getTestAttempts(testId).subscribe({
+    this.imocha.getTestAttempts(this.testId).subscribe({
       next: (response: TestInvitation[]) => {
 
         //This is a predicate function, which returns boolean
@@ -28,13 +30,13 @@ export class InviteService {
         //We never invited this email to this test before
         if (attemptIndex === -1) {
           //Fire off invite
-          this.imocha.inviteCandidate(testId, invitee_name, invitee_email).subscribe({
+          this.imocha.inviteCandidate(this.testId, invitee_name, invitee_email).subscribe({
             next: ({ testUrl, testInvitationId }) => {
               this.auth.setCurrentUser({
                 name: invitee_name,
                 email: invitee_email,
                 attemptId: testInvitationId,
-                testId: testId
+                testId: this.testId
               })
               //Changing url to coding.revature.com
               testUrl = testUrl.replace("test.imocha.io", "coding.revature.com");
@@ -50,13 +52,13 @@ export class InviteService {
         else {
 
           //re-attempt
-          this.imocha.reattemptCandidate(testId, response[attemptIndex].testInvitationId).subscribe({
+          this.imocha.reattemptCandidate(this.testId, response[attemptIndex].testInvitationId).subscribe({
             next: ({ testInvitationId, testUrl }) => {
               this.auth.setCurrentUser({
                 name: invitee_name,
                 email: invitee_email,
                 attemptId: testInvitationId,
-                testId: testId
+                testId: this.testId
               })
               //Changing URL to coding.revature.com
               testUrl = testUrl.replace("test.imocha.io", "coding.revature.com")
