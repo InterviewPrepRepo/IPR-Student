@@ -24,7 +24,7 @@ export class AuthService {
 
   public setCurrentUser(userToSet: User): void {
     if (!userToSet) return;
-    this.local.set('ipr_currentStudent', userToSet, 1, 'd');
+    this.local.set('ipr_currentStudent', userToSet);
   }
 
   public clearCurrentUser(): void {
