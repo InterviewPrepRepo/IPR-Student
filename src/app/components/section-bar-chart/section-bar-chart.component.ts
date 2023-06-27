@@ -5,6 +5,7 @@ import {
   ChartComponent,
   ApexDataLabels,
   ApexXAxis,
+  ApexYAxis,
   ApexPlotOptions,
   ApexTitleSubtitle,
   ApexFill,
@@ -17,6 +18,7 @@ export type ChartOptions = {
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
   xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
   title: ApexTitleSubtitle,
   fill: ApexFill,
   legend: ApexLegend
@@ -53,6 +55,10 @@ export class SectionBarChartComponent implements OnInit {
     },
     xaxis: {
       categories: []
+    },
+    yaxis: {
+      min: 0,
+      max: 100
     },
     fill: {
       colors: [

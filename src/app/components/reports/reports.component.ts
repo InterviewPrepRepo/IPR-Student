@@ -47,20 +47,20 @@ export class ReportsComponent implements OnInit {
         this.questions.map((question) => {
           // don't include negatives count it as does not exist
           if (question.score >= 0) {
-            scoreSum += question.score;
-            totalSection++;
             //calculating score
             if(!question.candidateAnswer.videoAnswer) {
               //this is imocha calculated coding questions
               question.score = (question.score / question.points) * 100
             }
-
+            
             if (question.sectionName in sectionMap) {
               sectionMap[question.sectionName].push(question.score);              
             }
             else {
               sectionMap[question.sectionName] = [ question.score ];
             }
+            scoreSum += question.score;
+            totalSection++;
           }
         })
         this.testScore = scoreSum / totalSection;
