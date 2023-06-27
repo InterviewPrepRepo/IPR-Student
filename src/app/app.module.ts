@@ -22,7 +22,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
 import { NavModule, TabsModule } from '@coreui/angular';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
-
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -55,9 +55,18 @@ import { InvitePageComponent } from './components/invite-page/invite-page.compon
     SharedModule,
     IconModule,
     NavModule, 
-    TabsModule
+    TabsModule,
+    HighlightModule
   ],
-  providers: [IconSetService],
+  providers: [
+    IconSetService,
+    {
+      provide : HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js')
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

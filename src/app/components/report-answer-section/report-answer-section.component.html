@@ -10,7 +10,7 @@
                         <h6 class="header">Your Answer:</h6>
                         <p *ngIf="q.givenAnswer">{{q.givenAnswer}}</p>
                         <ng-container *ngIf="q.candidateAnswer.codingQuestionData?.candidateCode">
-                            <pre><code>{{q.candidateAnswer.codingQuestionData.candidateCode}}</code></pre>
+                            <pre><code [highlight]="q.candidateAnswer.codingQuestionData.candidateCode"></code></pre>
                         </ng-container>
                         <ng-container *ngIf="displayCorrectAnswer && q.candidateAnswer.videoAnswer">
                             <h6 class="header">Baseline Answer:</h6>
