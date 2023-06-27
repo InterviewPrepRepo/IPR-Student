@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { InviteService } from 'src/app/services/invite-service/invite.service';
 
 @Component({
@@ -7,5 +8,7 @@ import { InviteService } from 'src/app/services/invite-service/invite.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(public invite : InviteService) { }
+  constructor(public invite : InviteService, public auth : AuthService) { 
+
+  }
 }
