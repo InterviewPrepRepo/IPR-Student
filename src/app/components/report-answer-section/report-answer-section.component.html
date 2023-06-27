@@ -1,29 +1,74 @@
 <div class="row">
-    <div class="col-md-8 col-sm-6">
+    <div class="col-md-6 col-sm-6">
         <div *ngFor="let q of questions; let i = index">
             <div (click)="switchVideo(i)" class="card mb-1"
                 [ngClass]="{'card-active' : i === currentQuestion - 1, 'look-disabled cursor-notallowed': q.questionStatus !== 'Answered', 'cursor-pointer card-hover': q.questionStatus === 'Answered'}">
                 <div class="card-body">
                     <h5>Q{{i + 1}}. <span [innerHTML]="q.question"></span></h5>
                     <p>{{q.questionStatus === 'Answered' ? scoreStatus(q.questionStatus, q.score) : "Not Answered"}}</p>
-                    <div class="card-answer-body" *ngIf="i === currentQuestion - 1 && q.score !== 0">
-                        <h6 class="header">Your Answer:</h6>
-                        <p *ngIf="q.givenAnswer">{{q.givenAnswer}}</p>
-                        <ng-container *ngIf="q.candidateAnswer.codingQuestionData?.candidateCode">
-                            <pre><code [highlight]="q.candidateAnswer.codingQuestionData.candidateCode"></code></pre>
-                        </ng-container>
-                        <ng-container *ngIf="displayCorrectAnswer && q.candidateAnswer.videoAnswer">
-                            <h6 class="header">Baseline Answer:</h6>
-                            <p>{{q.correctAnswer}}</p>
-                        </ng-container>
-
-                    </div>
-                </div>
+                    
+                    <div *ngIf="i === currentQuestion - 1">
+                        <div class="card-answer-body" [ngSwitch]="q.questionTypeId">
+                            <!-- Video Interview -->
+                            <div *ngSwitchCase="4">
+                                <ng-container *ngIf="q.score !== 0">
+                                    <h6 class="header">Your Answer:</h6>
+                                    <p *ngIf="q.givenAnswer">{{q.givenAnswer}}</p>
+        
+                                    <ng-container *ngIf="displayCorrectAnswer && q.candidateAnswer.videoAnswer">
+                                        <h6 class="header">Baseline Answer:</h6>
+                                        <p>{{q.correctAnswer}}</p>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                            <!-- Coding Question -->
+                            <div *ngSwitchCase="5">
+                            </div>
+                            
+                            <!-- Multiple Choice Question -->
+                            <div *ngSwitchCase="1">
+                                <h6 class="header">Your Answer: </h6>
+                                <pre [innerHtml]="q.candidateAnswer.singleAnswer.answers"></pre>
+                            </div>
+                            
+                            <!-- Multiple Answer Question -->
+                            <div *ngSwitchCase="7">
+                                <h6 class="header">Your Answers:</h6>
+                                <div *ngFor="let answer of q.candidateAnswer.multipleAnswer.answers">
+                                    <div [innerHTML]="answer"></div>
+                                </div>
+                            </div>
+                        </div> <!-- end of ngSwitch-->
+                    </div> <!-- end of ngIf currentQuestion === i-->
+                </div> <!--class = card-body -->
+            </div> <!-- (click)=switchVideo()-->
+        </div> <!-- end of ngFor q in questions-->
+    </div> <!-- end of col-md-9 -->
+    <div class="col-md-6 col-sm-6 answer-detail">
+        <div [ngSwitch]="questions[currentQuestion - 1].questionTypeId">
+            <!-- Video Interview -->
+            <div *ngSwitchCase="4">
+                <video class="vid-player" [src]="videoUrl" controls type="video/webm"></video>
             </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-6 vid-report">
-        <video *ngIf="videoUrl" [src]="videoUrl" controls type="video/webm"></video>
+            
+            <!-- Coding Question -->
+            <div *ngSwitchCase="5">
+
+                <h6 class="header">Your Answer:</h6>
+                <pre ><code  [highlight]="questions[currentQuestion - 1].candidateAnswer.codingQuestionData.candidateCode"></code></pre>
+            </div>
+
+            <!-- Multiple Choice Question -->
+            <div *ngSwitchCase="1">
+                MCQ
+            </div>
+
+            <!-- Multiple Answer Question -->
+            <div *ngSwitchCase="7">
+                Multi Answer
+            </div>
+
+        </div> <!--End ngSwitch-->
     </div>
     
 </div>

@@ -5,6 +5,7 @@ import {
   ApexTitleSubtitle,
   ApexChart,
   ApexXAxis,
+  ApexYAxis,
   ChartComponent,
 } from "ng-apexcharts";
 
@@ -13,6 +14,7 @@ export type ChartOptions = {
   chart: ApexChart;
   title: ApexTitleSubtitle;
   xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
 };
 
 @Component({
@@ -39,6 +41,11 @@ export class SectionChartComponent implements OnInit {
     },
     xaxis: {
       categories: []
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      tickAmount: 4
     }
 
   }
