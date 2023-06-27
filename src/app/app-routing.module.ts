@@ -31,6 +31,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'invite',
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'invite',
+    pathMatch: 'full'
   }
 ];
 
