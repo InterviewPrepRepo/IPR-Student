@@ -13,7 +13,8 @@ export class InvitePageComponent {
   loading: boolean = false;
   userForm = new FormGroup(
     {
-      name: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email])
     }
   );
@@ -22,7 +23,10 @@ export class InvitePageComponent {
     this.loading = true;
 
     if (this.userForm.valid) {
-      this.invite.onInvite(this.userForm.value.email!, this.userForm.value.name!).subscribe(
+
+      let name = this.userForm.value.firstName + ' ' + this.userForm.value.lastName;
+
+      this.invite.onInvite(this.userForm.value.email!, name).subscribe(
         (result) => {
           this.loading = result;
         })
