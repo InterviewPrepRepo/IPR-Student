@@ -38,18 +38,6 @@ p{
     font-size: 26px;
     line-height: 40px;
 }
-.content{
-    margin: 0% 5%;
-}
-.name-boxes{
-    display: flex;
-    flex-direction: row nowrap;
-    align-items: center;
-    justify-content: space-around;
-}
-.first-name{
-    margin-right: 10pt;
-}
 
 .name-label{
     padding-top: 5%;
@@ -58,4 +46,7 @@ p{
 .email-group{
     padding-top: 5%;
     padding-bottom: 5%;
+}
+.content{
+    max-width: 95%;
 }

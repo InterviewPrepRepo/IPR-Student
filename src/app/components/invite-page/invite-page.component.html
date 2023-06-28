@@ -1,5 +1,6 @@
-<div class="row">
-    <div class="content col-7">
+<div class="container content">
+    <div class="row">
+    <div class="col-6">
         <div>
             <h4>Welcome to Revature's Interview Clinic: Automated Technical Skills Assessment Platform</h4>
             <p>
@@ -21,9 +22,9 @@
             <h4> AI-Based Assessment and Scoring: </h4>
             <p>
                 Unleash the power of artificial intelligence as we evaluate your technical abilities.
-                 Our advanced algorithms meticulously analyze your responses, providing unbiased ratings of your skills. 
-                 With AI-based assessment, you can trust in fair evaluations that deliver accurate and consistent scoring, 
-                 giving you valuable insights into your expertise in specific technologies.
+                Our advanced algorithms meticulously analyze your responses, providing unbiased ratings of your skills. 
+                With AI-based assessment, you can trust in fair evaluations that deliver accurate and consistent scoring, 
+                giving you valuable insights into your expertise in specific technologies.
             </p>
         </div>
         <div>
@@ -42,14 +43,14 @@
             </p>
         </div>
     </div>
-    <div class="container col">
+    <div class="col-6">
     <div *ngIf="!loading else loadingComponent" class="details-form">
         <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
             <label class="name-label" for="first-name">Full Name</label>
-                <div class="name-boxes">
-                    <div class="first-name">
+            <div class="container mx-0">
+                <div class="row">
+                    <div class="col-md">
                         <input type="text" class="form-control" id="first-name" formControlName="firstName" placeholder="First Name">
-                        
                         <div *ngIf="this.userForm.controls['firstName'].invalid && (this.userForm.controls['firstName'].dirty || this.userForm.controls['firstName'].touched)"
                             class="alert alert-danger">
                             <div *ngIf="this.userForm.controls['firstName'].errors!['required']">
@@ -57,7 +58,7 @@
                             </div>                                         
                         </div>
                     </div>
-                    <div>
+                    <div class="col-md">
                         <input type="text" class="form-control" id="last-name" formControlName="lastName" placeholder="Last Name">
                         <div *ngIf="this.userForm.controls['lastName'].invalid && (this.userForm.controls['lastName'].dirty || this.userForm.controls['lastName'].touched)"
                             class="alert alert-danger">
@@ -67,7 +68,8 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+                
             <div class="form-group email-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
@@ -91,3 +93,5 @@
     </ng-template>
 </div>
 </div>
+</div>
+

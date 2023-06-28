@@ -23,6 +23,7 @@ import { TestAttemptReportsComponent } from './components/test-attempt-reports/t
 import { NavModule, TabsModule } from '@coreui/angular';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
     ReportResponseDetailComponent,
     ReportAnswerSectionComponent,
     TestAttemptReportsComponent,
-    InvitePageComponent
+    InvitePageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
