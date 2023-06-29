@@ -40,6 +40,11 @@ p{
 
 .name-label{
     padding-top: 5%;
+    font-weight: bold;
+}
+
+.email-label{
+    font-weight: bold;
 }
 
 .email-group{
@@ -47,7 +52,7 @@ p{
     padding-bottom: 5%;
 }
 .content{
-    //max-width: 95%;
+    max-width: 90vw;
     margin-left: 3.5vw;
     margin-right: 3.5vw;
 }

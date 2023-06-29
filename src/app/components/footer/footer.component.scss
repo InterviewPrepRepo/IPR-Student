@@ -1,11 +1,19 @@
 .footer-content{
     background-color: #00183C;
     margin: 3.5vw;
-    height: 10vh;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    color: var(--revature-white);
+    font-family: 'Roboto';
+    padding-top: 3vh;
+    padding-bottom: 0;
 }
 
-p{
-    color: white;
+.filter-white{
+    filter: invert(57%) sepia(17%) saturate(1791%) hue-rotate(332deg) brightness(102%) contrast(95%);
+}
+svg{
+    margin-right: 6px;
+    margin-left: 6px;
+    margin-bottom: 2vh;
 }
