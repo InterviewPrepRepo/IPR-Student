@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild} from '@angular/core';
 
 import {
   ApexAxisChartSeries,
@@ -8,6 +8,7 @@ import {
   ApexYAxis,
   ChartComponent,
 } from "ng-apexcharts";
+import { NotifyService } from 'src/app/services/notify-service/notify.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -25,6 +26,10 @@ export type ChartOptions = {
 export class SectionChartComponent implements OnInit {
   @Input() sectionNames: string[] = [];
   @Input() sectionAverages: number[] = [];
+  @ViewChild('apexRadarChart') chart! : ChartComponent;
+
+  constructor(private notify : NotifyService) { }
+
   chartOptions: ChartOptions = {
     series: [
       {
@@ -52,6 +57,10 @@ export class SectionChartComponent implements OnInit {
   ngOnInit(): void {
     this.chartOptions.series[0].data = this.sectionAverages;
     this.chartOptions.xaxis.categories = this.sectionNames;
+
+    this.notify.tabSwitchObservable$.subscribe((tabIndex : number) => {
+      this.chart.render();
+    })
   }
 
 }
