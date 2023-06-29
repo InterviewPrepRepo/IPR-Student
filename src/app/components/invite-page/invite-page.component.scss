@@ -9,7 +9,6 @@
     color: var(--revature-white);
     border-radius: 15px;
     padding: 2% 5% 5%;
-    margin-right: 15%;
 }
 .btn-margin{
     margin-top: 5%;
@@ -48,5 +47,7 @@ p{
     padding-bottom: 5%;
 }
 .content{
-    max-width: 95%;
+    //max-width: 95%;
+    margin-left: 3.5vw;
+    margin-right: 3.5vw;
 }

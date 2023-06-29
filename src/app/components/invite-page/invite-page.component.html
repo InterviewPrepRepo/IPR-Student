@@ -1,97 +1,112 @@
 <div class="container content">
     <div class="row">
-    <div class="col-6">
-        <div>
-            <h4>Welcome to Revature's Interview Clinic: Automated Technical Skills Assessment Platform</h4>
-            <p>
-                Discover our revolutionary Interview Clinic, designed to redefine how you evaluate and enhance your technical abilities, 
-                empowering you to significantly impact your career and business. Say goodbye to inaccurate manual evaluations and 
-                embrace a streamlined, automated solution that saves time, eliminates bias, and helps elevate your career to new heights 
-                with confidence and precision.
-            </p>
+        <div class="col-6">
+            <div>
+                <h4>Welcome to Revature's Interview Clinic: Automated Technical Skills Assessment Platform</h4>
+                <p>
+                    Discover our revolutionary Interview Clinic, designed to redefine how you evaluate and enhance your
+                    technical abilities,
+                    empowering you to significantly impact your career and business. Say goodbye to inaccurate manual
+                    evaluations and
+                    embrace a streamlined, automated solution that saves time, eliminates bias, and helps elevate your
+                    career to new heights
+                    with confidence and precision.
+                </p>
+            </div>
+            <div>
+                <h4>Automated Video Interviews:</h4>
+                <p>
+                    Step into the future with our cutting-edge Interview Clinic, where you can confidently demonstrate
+                    your technical
+                    abilities through fully automated video interviews. Seamlessly record video responses to
+                    thoughtfully curated questions
+                    and let your skills shine.
+                </p>
+            </div>
+            <div>
+                <h4> AI-Based Assessment and Scoring: </h4>
+                <p>
+                    Unleash the power of artificial intelligence as we evaluate your technical abilities.
+                    Our advanced algorithms meticulously analyze your responses, providing unbiased ratings of your
+                    skills.
+                    With AI-based assessment, you can trust in fair evaluations that deliver accurate and consistent
+                    scoring,
+                    giving you valuable insights into your expertise in specific technologies.
+                </p>
+            </div>
+            <div>
+                <h4>Reporting and Analytics Dashboard:</h4>
+                <p>
+                    Gain valuable insights about your performance through our comprehensive analytics and report
+                    generation dashboard.
+                    Assessments scores will guide you in making informed decisions regarding upskilling or reskilling,
+                    empowering your
+                    professional growth.
+                </p>
+            </div>
+            <div>
+                <h4>On-Demand Availability:</h4>
+                <p>
+                    With our platform, you have the freedom to initiate assessments whenever it suits you best, ensuring
+                    a
+                    seamless and efficient experience for everyone in your organization.
+                </p>
+            </div>
         </div>
-        <div>
-            <h4>Automated Video Interviews:</h4>
-            <p>
-                Step into the future with our cutting-edge Interview Clinic, where you can confidently demonstrate your technical 
-                abilities through fully automated video interviews. Seamlessly record video responses to thoughtfully curated questions 
-                and let your skills shine.
-            </p>
-        </div>
-        <div>
-            <h4> AI-Based Assessment and Scoring: </h4>
-            <p>
-                Unleash the power of artificial intelligence as we evaluate your technical abilities.
-                Our advanced algorithms meticulously analyze your responses, providing unbiased ratings of your skills. 
-                With AI-based assessment, you can trust in fair evaluations that deliver accurate and consistent scoring, 
-                giving you valuable insights into your expertise in specific technologies.
-            </p>
-        </div>
-        <div>
-            <h4>Reporting and Analytics Dashboard:</h4>
-            <p>
-                Gain valuable insights about your performance through our comprehensive analytics and report generation dashboard. 
-                Assessments scores will guide you in making informed decisions regarding upskilling or reskilling, empowering your 
-                professional growth.
-            </p>
-        </div>
-        <div>
-            <h4>On-Demand Availability:</h4>
-            <p>
-                With our platform, you have the freedom to initiate assessments whenever it suits you best, ensuring a 
-                seamless and efficient experience for everyone in your organization.
-            </p>
-        </div>
-    </div>
-    <div class="col-6">
-    <div *ngIf="!loading else loadingComponent" class="details-form">
-        <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
-            <label class="name-label" for="first-name">Full Name</label>
-            <div class="container mx-0">
-                <div class="row">
-                    <div class="col-md">
-                        <input type="text" class="form-control" id="first-name" formControlName="firstName" placeholder="First Name">
-                        <div *ngIf="this.userForm.controls['firstName'].invalid && (this.userForm.controls['firstName'].dirty || this.userForm.controls['firstName'].touched)"
-                            class="alert alert-danger">
-                            <div *ngIf="this.userForm.controls['firstName'].errors!['required']">
-                                First name is required.
-                            </div>                                         
+        <div class="col-6">
+            <div *ngIf="!loading else loadingComponent" class="details-form sticky-top">
+                <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
+                    <label class="name-label" for="first-name">Full Name</label>
+                    <div class="container mx-0">
+                        <div class="row">
+                            <div class="col-md">
+                                <input type="text" class="form-control" id="first-name" formControlName="firstName"
+                                    placeholder="First Name">
+                                <div *ngIf="this.userForm.controls['firstName'].invalid && (this.userForm.controls['firstName'].dirty || this.userForm.controls['firstName'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="this.userForm.controls['firstName'].errors!['required']">
+                                        First name is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <input type="text" class="form-control" id="last-name" formControlName="lastName"
+                                    placeholder="Last Name">
+                                <div *ngIf="this.userForm.controls['lastName'].invalid && (this.userForm.controls['lastName'].dirty || this.userForm.controls['lastName'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="this.userForm.controls['lastName'].errors!['required']">
+                                        Last name is required.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md">
-                        <input type="text" class="form-control" id="last-name" formControlName="lastName" placeholder="Last Name">
-                        <div *ngIf="this.userForm.controls['lastName'].invalid && (this.userForm.controls['lastName'].dirty || this.userForm.controls['lastName'].touched)"
-                            class="alert alert-danger">
-                            <div *ngIf="this.userForm.controls['lastName'].errors!['required']">
-                                Last name is required.
-                            </div>                                         
-                        </div>
-                    </div>
-                </div>
-            </div>
-                
-            <div class="form-group email-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
-                <div *ngIf="this.userForm.controls['email'].invalid && (this.userForm.controls['email'].dirty || this.userForm.controls['email'].touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="this.userForm.controls['email'].errors!['required']">
-                        Email is required.
-                    </div>  
-                    <div *ngIf="this.userForm.controls['email'].errors!['email']">
-                        Please enter a valid email.
-                    </div>                                               
-                </div>
-            </div>
-            <div class="form-group btn-margin">
-                <input type="submit" value="Go To Test" class="btn login-btn btn-revature-secondary" />
-            </div>
-        </form>
-    </div>
-    <ng-template #loadingComponent>
-        <app-loading></app-loading>
-    </ng-template>
-</div>
-</div>
-</div>
 
+                    <div class="form-group email-group">
+                        <label for="email">Email</label>
+                        <div class="container">
+                            <input type="email" class="form-control" id="email" formControlName="email"
+                                placeholder="Email">
+                            <div *ngIf="this.userForm.controls['email'].invalid && (this.userForm.controls['email'].dirty || this.userForm.controls['email'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="this.userForm.controls['email'].errors!['required']">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="this.userForm.controls['email'].errors!['email']">
+                                    Please enter a valid email.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group btn-margin">
+                        <input type="submit" value="Go To Test" class="btn login-btn btn-revature-secondary" />
+                    </div>
+                </form>
+            </div>
+            <ng-template #loadingComponent>
+                <app-loading></app-loading>
+            </ng-template>
+        </div>
+    </div>
+</div>
