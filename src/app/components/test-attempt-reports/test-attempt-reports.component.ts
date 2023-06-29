@@ -13,6 +13,7 @@ import TestInvitation from 'src/app/models/testInvitation';
 export class TestAttemptReportsComponent {
 
   constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute, private router : Router) {}
+  
   activeTabIndex = 0;
   attempts : TestInvitation[] = [];
   loading: boolean = false;

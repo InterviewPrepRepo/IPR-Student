@@ -3,6 +3,7 @@
     <div class="container mt-2">
         <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
             <h1 class="score-header">You have scored {{testScore | number: '1.2-2'}}%</h1>
+            <echarts-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></echarts-bar-chart>
             <app-section-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-bar-chart>
             <app-section-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-chart>
             <app-report-response-detail [questions]="questions"></app-report-response-detail>
