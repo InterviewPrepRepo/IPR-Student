@@ -7,6 +7,7 @@
     font-family: 'Roboto';
     padding-top: 3vh;
     padding-bottom: 0;
+    max-width: 90vw;
 }
 
 .filter-white{
@@ -16,4 +17,8 @@ svg{
     margin-right: 6px;
     margin-left: 6px;
     margin-bottom: 2vh;
+}
+span{
+    margin-right: 10px;
+    cursor: pointer;
 }
