@@ -24,7 +24,7 @@ export class TestAttemptReportsComponent {
         if(!testId) this.router.navigate(['invite'])
         this.imocha.getTestAttempts(testId).subscribe({
           next: (res) => {
-          this.attempts = res.filter((testAttempt : TestInvitation) => testAttempt.email === currentUser.email)
+          this.attempts = res.filter((testAttempt : TestInvitation) => testAttempt.email.toLowerCase() === currentUser.email?.toLowerCase())
           this.loading = false;
           },
           error: (err) => {

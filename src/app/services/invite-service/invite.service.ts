@@ -14,13 +14,15 @@ export class InviteService {
   readonly testId : number = 1250203;
   
   onInvite(invitee_email: string, invitee_name: string): Observable<boolean> {
+    invitee_email = invitee_email.toLowerCase();
+
     const loading = new BehaviorSubject(true);
     this.imocha.getTestAttempts(this.testId).subscribe({
       next: (response: TestInvitation[]) => {
 
         //This is a predicate function, which returns boolean
         let attemptExists = (testAttempt: TestInvitation) => {
-          if (testAttempt.email === invitee_email)
+          if (testAttempt.email.toLowerCase() === invitee_email)
             return true;
           else
             return false;
