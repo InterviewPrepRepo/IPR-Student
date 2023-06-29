@@ -1,10 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ImochaService } from '../../services/imocha-service/imocha.service';
 import TestAttemptQuestion from '../../models/testAttemptQuestion';
-import { AuthService } from 'src/app/services/auth-service/auth.service';
-import User from 'src/app/models/user';
-import { ActivatedRoute } from '@angular/router';
-import TestInvitation from 'src/app/models/testInvitation';
 import { UtilService } from 'src/app/services/util-service/util.service';
 
 interface ChartData {
@@ -34,7 +30,7 @@ export class ReportsComponent implements OnInit {
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private activatedRoute: ActivatedRoute, private util : UtilService) { }
+  constructor(private imocha: ImochaService, private util : UtilService) { }
 
   ngOnInit(): void {
       this.imocha.getQuestionsByTestAttemptId(this.attemptId).subscribe((res) => {
@@ -75,5 +71,4 @@ export class ReportsComponent implements OnInit {
         this.loading = false;
       })
   }
-
 }

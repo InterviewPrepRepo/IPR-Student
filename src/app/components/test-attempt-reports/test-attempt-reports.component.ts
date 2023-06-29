@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import User from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import TestInvitation from 'src/app/models/testInvitation';
+import { NotifyService } from 'src/app/services/notify-service/notify.service';
 
 @Component({
   selector: 'app-test-attempt-reports',
@@ -12,7 +13,7 @@ import TestInvitation from 'src/app/models/testInvitation';
 })
 export class TestAttemptReportsComponent {
 
-  constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute, private router : Router) {}
+  constructor(private imocha: ImochaService, private auth: AuthService, private activatedRoute: ActivatedRoute, private router : Router, private notify: NotifyService) {}
   
   activeTabIndex = 0;
   attempts : TestInvitation[] = [];
@@ -34,8 +35,9 @@ export class TestAttemptReportsComponent {
     }
   }
 
-  activeTab(i : number): void {
+  activeTab(i : number) : void {
     this.activeTabIndex = i;
-    window.dispatchEvent(new Event('resize'))
+    // window.dispatchEvent(new Event('resize'))
+    this.notify.notifyTabSwitch(i);
   }
 }

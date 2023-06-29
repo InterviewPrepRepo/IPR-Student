@@ -23,7 +23,6 @@ import { TestAttemptReportsComponent } from './components/test-attempt-reports/t
 import { NavModule, TabsModule } from '@coreui/angular';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
-import { EchartsModule } from '../echarts/echarts.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +56,6 @@ import { EchartsModule } from '../echarts/echarts.module';
     NavModule, 
     TabsModule,
     HighlightModule,
-    EchartsModule
   ],
   providers: [
     IconSetService,
