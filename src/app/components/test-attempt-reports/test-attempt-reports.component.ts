@@ -24,9 +24,15 @@ export class TestAttemptReportsComponent {
       this.loading = true;
       this.activatedRoute.queryParams.subscribe(({ testId }) => {
         if(!testId) this.router.navigate(['invite'])
-        this.imocha.getTestAttempts(testId).subscribe((res) => {
-          this.attempts = res.filter((testAttempt : TestInvitation) => testAttempt.email === currentUser.email)
+        this.imocha.getTestAttempts(testId).subscribe({
+          next: (res) => {
+          this.attempts = res.filter((testAttempt : TestInvitation) => testAttempt.email.toLowerCase() === currentUser.email?.toLowerCase())
           this.loading = false;
+          },
+          error: (err) => {
+            console.error(err);
+            this.router.navigate(['invite'])
+          }
         })
       })
     }

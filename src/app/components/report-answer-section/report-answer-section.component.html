@@ -28,7 +28,7 @@
                             <!-- Multiple Choice Question -->
                             <div *ngSwitchCase="1">
                                 <h6 class="header">Your Answer: </h6>
-                                <pre [innerHtml]="q.candidateAnswer.singleAnswer.answers"></pre>
+                                <span [innerHTML]="q.candidateAnswer.singleAnswer.answers"></span>
                             </div>
                             
                             <!-- Multiple Answer Question -->
@@ -60,12 +60,10 @@
 
             <!-- Multiple Choice Question -->
             <div *ngSwitchCase="1">
-                MCQ
             </div>
 
             <!-- Multiple Answer Question -->
             <div *ngSwitchCase="7">
-                Multi Answer
             </div>
 
         </div> <!--End ngSwitch-->

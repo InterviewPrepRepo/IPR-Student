@@ -2,10 +2,10 @@
 
 <ng-template #reports>
     <ng-container *ngIf="attempts.length > 0; else noReport">
-        <c-nav variant="tabs">
+        <c-nav variant="tabs" class="attempt-tabs">
             <ng-container *ngFor="let attempt of attempts; let i = index" >
                 <c-nav-item>
-                    <a (click)="activeTab(i)" class="reva-orange" [active]="activeTabIndex == i" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="i" cNavLink>Attempt {{i + 1}}</a>
+                    <a (click)="activeTab(i)" class="reva-orange attempt-tab" [active]="activeTabIndex == i" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="i" cNavLink>Attempt {{i + 1}}</a>
                 </c-nav-item>
             </ng-container>
         </c-nav>

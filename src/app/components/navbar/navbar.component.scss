@@ -1,50 +1,30 @@
 .brand {
-    width: 90pt;
+    width: 120pt;
 }
+
+.navbar{
+    padding-top: 5vh;
+    margin-bottom: 1vh;
+    margin-left: 3.5vw;
+    margin-right: 3.5vw;
+    width: 90vw;
+}
+
 .navigation{
     display: flex;
     align-items: flex-end;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
-.tab {
-    --animation-time: 200ms;
-
-    position: relative;
-    overflow: hidden;
-    margin-right: 2%;
-}
-
-.tab::after {
-    content: '';
-    display: block;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: var(--underline-size, 2px);
-    position: absolute;
-    background-color: var(--revature-orange);
-    transition:
-        transform ease var(--animation-time, 200ms),
-        opacity ease 0ms 200ms;
-    transform: translateX(100%);
-    opacity: 0;
+.navbar-option{
+    font-size: 20px;
+    font-family: 'Roboto';
+    line-height: 24px;
+    padding: 15px 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 
-.tab:hover~.tab::after {
-    transform: translateX(-100%);
-}
 
-.tabs-wrapper:not(:hover) .tab:not(.is-active)::after {
-    transform: translateY(100%);
-}
 
-.tabs:hover .tab:hover::after,
-.tabs-wrapper:hover .tabs:hover .tab:hover::after {
-    transition-delay: 0ms, 0ms;
-}
 
-.tab.is-active::after,
-.tab:hover::after {
-    transform: translateX(0%);
-    opacity: 1;
-}
+
