@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '~highlight.js/styles/stackoverflow-light.css';
+
+
 :root {
     --revature-orange: rgb(255, 112, 20);
     --revature-orange-subtle: rgba(255, 112, 20, 0.7);
@@ -53,6 +55,16 @@ body {
     background-color: var(--revature-orange);
 }
 
+.btn-revature-secondary {
+    background-color: #FFCF00;
+    color: var(--revature-black);
+    border-radius: 45px;
+}
+
+.btn-revature-secondary:hover{
+    background-color: var(--revature-yellow);
+}
+
 .btn-outline-revature-primary {
     background-color: inherit;
     color: var(--revature-orange-subtle);
@@ -64,7 +76,11 @@ body {
     color: var(--revature-orange);
     border-color: var(--revature-orange);
 }
-
+.btn-revature-blue{
+    background-color: var(--revature-navy);
+    color: var(--revature-white);
+    border-radius: 45px;
+}
 h2 {
     color: var(--revature-black);
 }
