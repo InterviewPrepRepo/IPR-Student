@@ -6,5 +6,5 @@ import { cibInstagram, cibTwitter, cibTiktok, cibFacebook, cibLinkedin, cibYoutu
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  icons = {cibInstagram, cibTwitter, cibTiktok, cibFacebook, cibLinkedin, cibYoutube}; 
+  icons = { cibInstagram, cibTwitter, cibTiktok, cibFacebook, cibLinkedin, cibYoutube };
 }
