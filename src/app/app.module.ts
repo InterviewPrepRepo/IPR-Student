@@ -58,7 +58,7 @@ import { FooterComponent } from './components/footer/footer.component';
     IconModule,
     NavModule, 
     TabsModule,
-    HighlightModule
+    HighlightModule,
   ],
   providers: [
     IconSetService,
