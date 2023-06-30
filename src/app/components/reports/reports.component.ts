@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ImochaService } from '../../services/imocha-service/imocha.service';
-import TestAttemptQuestion from '../../models/testAttemptQuestion';
-import { UtilService } from 'src/app/services/util-service/util.service';
-import ChartData from 'src/app/models/chartData';
+import { Component, Input } from '@angular/core';
+import TestAttemptQuestion from 'src/models/testAttemptQuestion';
+import ChartData from 'src/models/chartData';
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',

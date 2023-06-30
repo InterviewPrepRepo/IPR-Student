@@ -11,7 +11,7 @@ import {
   ApexLegend,
   ChartComponent
 } from "ng-apexcharts";
-import { NotifyService } from 'src/app/services/notify-service/notify.service';
+import { NotifyService } from 'src/services/notify-service/notify.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;

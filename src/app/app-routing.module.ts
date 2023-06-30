@@ -2,7 +2,7 @@ import { NgModule, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, RouterModule, RouterStateSnapshot, Routes, Router } from '@angular/router';
 import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
-import { AuthService } from './services/auth-service/auth.service';
+import { AuthService } from '../services/auth-service/auth.service';
 
 
 const canActivateReport: CanActivateFn =
