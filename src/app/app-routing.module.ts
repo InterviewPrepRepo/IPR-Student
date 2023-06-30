@@ -4,6 +4,7 @@ import { TestAttemptReportsComponent } from './components/test-attempt-reports/t
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { AuthService } from './services/auth-service/auth.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AttemptProcessingComponent } from './components/attempt-processing/attempt-processing.component';
 
 
 const canActivateReport: CanActivateFn =
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'not-found',
     component: NotFoundComponent,
+  },
+  //testing only
+  {
+    path: 'processing',
+    component: AttemptProcessingComponent,
   },
   {
     path: '',
