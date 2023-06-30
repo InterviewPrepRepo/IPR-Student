@@ -24,6 +24,7 @@ import { NavModule, TabsModule } from '@coreui/angular';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { FooterComponent } from './components/footer/footer.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FooterComponent } from './components/footer/footer.component';
     TestAttemptReportsComponent,
     InvitePageComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
