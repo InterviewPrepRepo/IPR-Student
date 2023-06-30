@@ -25,6 +25,7 @@ import { InvitePageComponent } from './components/invite-page/invite-page.compon
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NoReportComponent } from './components/no-report/no-report.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     InvitePageComponent,
     FooterComponent,
     NotFoundComponent,
+    NoReportComponent,
   ],
   imports: [
     BrowserModule,
