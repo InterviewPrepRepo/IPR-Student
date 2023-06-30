@@ -13,20 +13,20 @@
         <c-tab-content #tabContent="cTabContent">
             <ng-container *ngFor="let attempt of attempts; let i = index">
                 <c-tab-pane>
-                    <app-reports 
+                    <!-- <app-reports 
                         [attemptId]="attempts[i].testInvitationId" 
                         [questions]="attemptDetails[attempts[i].testInvitationId].questions" 
                         [scoreData]="attemptDetails[attempts[i].testInvitationId].scoreData" 
                         [testScore]="attemptDetails[attempts[i].testInvitationId].testScore"
                         [allAttemptsScore]="allAttemptSectionScore">
-                    </app-reports>
+                    </app-reports> -->
                 </c-tab-pane>
             </ng-container>
         </c-tab-content>
     </ng-container>
     <ng-template #noReport>
         <div class="container no-report">
-            <app-no-report></app-no-report>
+            <!-- <app-no-report></app-no-report> -->
         </div>
     </ng-template>
 </ng-template>

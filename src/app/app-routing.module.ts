@@ -1,6 +1,6 @@
 import { NgModule, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, RouterModule, RouterStateSnapshot, Routes, Router } from '@angular/router';
-import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
+import { TestAttemptReportsComponent } from '../test-reports/test-attempt-reports/test-attempt-reports.component';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { AuthService } from 'src/services/auth-service/auth.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';

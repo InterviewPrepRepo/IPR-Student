@@ -11,22 +11,12 @@ import { QuestionCarouselComponent } from './components/question-carousel/questi
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { InterviewInviteComponent } from './components/interview-invite/interview-invite.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ReportsComponent } from './components/reports/reports.component';
-import { LoadingComponent } from './components/loading/loading.component';
-import { NgApexchartsModule } from "ng-apexcharts";
-import { SectionChartComponent } from './components/section-chart/section-chart.component';
-import { SectionBarChartComponent } from './components/section-bar-chart/section-bar-chart.component';
-import { ReportResponseDetailComponent } from './components/report-response-detail/report-response-detail.component';
-import { ReportAnswerSectionComponent } from './components/report-answer-section/report-answer-section.component';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
-import { NavModule, TabsModule } from '@coreui/angular';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
-import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NoReportComponent } from './components/no-report/no-report.component';
-import { AttemptProcessingComponent } from './components/attempt-processing/attempt-processing.component';
+import { IprCommonModule } from 'src/ipr-common/ipr-common.module';
+import { TestReportsModule } from 'src/test-reports/test-reports.module';
 
 @NgModule({
   declarations: [
@@ -36,18 +26,9 @@ import { AttemptProcessingComponent } from './components/attempt-processing/atte
     QuizListComponent,
     InterviewInviteComponent,
     NavbarComponent,
-    ReportsComponent,
-    LoadingComponent,
-    SectionChartComponent,
-    SectionBarChartComponent,
-    ReportResponseDetailComponent,
-    ReportAnswerSectionComponent,
-    TestAttemptReportsComponent,
     InvitePageComponent,
     FooterComponent,
-    NotFoundComponent,
-    NoReportComponent,
-    AttemptProcessingComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -58,22 +39,15 @@ import { AttemptProcessingComponent } from './components/attempt-processing/atte
     ProgressModule,
     ModalModule,
     BrowserAnimationsModule,
-    NgApexchartsModule,
     AccordionModule,
     SharedModule,
     IconModule,
-    NavModule, 
-    TabsModule,
-    HighlightModule,
+    IprCommonModule,
+    TestReportsModule
   ],
   providers: [
     IconSetService,
-    {
-      provide : HIGHLIGHT_OPTIONS,
-      useValue: {
-        fullLibraryLoader: () => import('highlight.js')
-      }
-    }
+
   ],
   bootstrap: [AppComponent]
 })
