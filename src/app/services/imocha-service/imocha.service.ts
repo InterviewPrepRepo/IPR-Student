@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import TestInvitation from 'src/app/models/testInvitation';
 import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
 import VideoTest from 'src/app/models/videoTest';
 import { UtilService } from '../util-service/util.service';
-
+import ChartData from 'src/app/models/chartData';
 @Injectable({
   providedIn: 'root'
 })
@@ -46,21 +46,21 @@ export class ImochaService {
     return this.http.post<any>(this.urlBuilder(`reattempt/${testInvitationId}`), {startDateTime : startDateString, endDateTime: endDateString, timeZoneId, testId});
   }
   
-  //grabs all attempts and organizes only completed attemps by test ids. 
-  processAttempts(attempts : TestInvitation[]) : Record<number, TestInvitation[]> {
-    let testToAttemptsMap : Record<number, TestInvitation[]> = {};
-    for(let attempt of attempts) {
-      if(attempt.teststatus === 'Complete') {
-        if(!(attempt.testId in testToAttemptsMap)) {
-          testToAttemptsMap[attempt.testId] = [attempt];
-        }
-        else {
-          testToAttemptsMap[attempt.testId].push(attempt);
-        }
-      }
-    }
-    return testToAttemptsMap;
-  }
+  // //grabs all attempts and organizes only completed attemps by test ids. 
+  // processAttempts(attempts : TestInvitation[]) : Record<number, TestInvitation[]> {
+  //   let testToAttemptsMap : Record<number, TestInvitation[]> = {};
+  //   for(let attempt of attempts) {
+  //     if(attempt.teststatus === 'Complete') {
+  //       if(!(attempt.testId in testToAttemptsMap)) {
+  //         testToAttemptsMap[attempt.testId] = [attempt];
+  //       }
+  //       else {
+  //         testToAttemptsMap[attempt.testId].push(attempt);
+  //       }
+  //     }
+  //   }
+  //   return testToAttemptsMap;
+  // }
 
   //Grabs all tests labelled 'Video Test' from iMocha. By default, it grabs 100 tests
   getTests(pageNo : number = 1, itemsPerPage : number = 100) : Observable<{tests: VideoTest[]}> {
@@ -94,7 +94,63 @@ export class ImochaService {
   }
 
   //gets each question detail and score for one test attempt
-  getQuestionsByTestAttemptId(testAttemptId : number) : Observable<{result : TestAttemptQuestion[]}> {
-    return this.http.get<{result : TestAttemptQuestion[]}>(this.urlBuilder(`reports/${testAttemptId}/questions`));
+  getQuestionsByTestAttemptId(testAttemptId : number) : Observable<{testInvitationId: number, questions: TestAttemptQuestion[], testScore: number, scoreData: ChartData}> {
+    const subject = new Subject<{testInvitationId: number, questions: TestAttemptQuestion[], testScore: number, scoreData: ChartData}>();
+    this.http.get<{result : TestAttemptQuestion[]}>(this.urlBuilder(`reports/${testAttemptId}/questions`)).subscribe({
+      next: (res) => {
+        const questions = res.result;
+        let testScore;
+        let scoreData : ChartData = {
+          //set keys array for the chart to consume
+          keys: [],
+          values: []
+        };
+
+        //create a map for each section with the score candidate got for the questions in the section
+        //and also calculate total score while we're at it
+        const sectionMap: Record<string, number[]> = {};
+        let scoreSum = 0;
+        let totalSection = 0;
+
+        questions.map((question) => {
+          // don't include negatives count it as does not exist
+          if (question.score >= 0) {
+            //calculating score
+            if(!question.candidateAnswer.videoAnswer) {
+              //this is imocha calculated coding questions
+              question.score = (question.score / question.points) * 100
+            }
+            
+            if (question.sectionName in sectionMap) {
+              sectionMap[question.sectionName].push(question.score);              
+            }
+            else {
+              sectionMap[question.sectionName] = [ question.score ];
+            }
+            scoreSum += question.score;
+            totalSection++;
+          }
+        })
+        
+        testScore = scoreSum / totalSection;
+
+        //Calculate average score for each section name
+        Object.keys(sectionMap).map((key) => {
+          let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
+          //only include sections with positive average
+          scoreData.keys.push(key);
+          scoreData.values.push(this.util.truncateToSignificantDigit(average));
+        });
+
+        subject.next({testInvitationId: testAttemptId, questions, testScore, scoreData})
+        subject.complete()
+      },
+      error: (err) => {
+        subject.error(err);
+        subject.complete()
+      }
+    });
+
+    return subject.asObservable();
   }
 }

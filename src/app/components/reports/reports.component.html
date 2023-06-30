@@ -1,14 +1,11 @@
-<app-loading *ngIf="loading; else reportDetail"></app-loading>
-<ng-template #reportDetail>
-    <div class="container mt-2">
-        <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
-            <h1 class="score-header">You have scored {{testScore | number: '1.2-2'}}%</h1>
-            <app-section-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-bar-chart>
-            <app-section-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-chart>
-            <app-report-response-detail [questions]="questions"></app-report-response-detail>
-        </div>
+<div class="container mt-2">
+    <div *ngIf="questions && questions.length > 0; else noQuestions" class="row">
+        <h1 class="score-header">You have scored {{testScore | number: '1.2-2'}}%</h1>
+        <app-section-bar-chart [sectionNames]="scoreData.keys" [sectionAverages]="scoreData.values"></app-section-bar-chart>
+        <app-section-chart [sectionNames]="scoreData.keys" [allAttemptsScore]="allAttemptsScore"></app-section-chart>
+        <app-report-response-detail [questions]="questions"></app-report-response-detail>
     </div>
-</ng-template>
+</div>
 <ng-template #noQuestions>
     <div>Attempt still being processed... please check back in a bit!</div>
 </ng-template>
