@@ -33,11 +33,6 @@ const routes: Routes = [
     path: 'not-found',
     component: NotFoundComponent,
   },
-  //testing only
-  {
-    path: 'processing',
-    component: AttemptProcessingComponent,
-  },
   {
     path: '',
     redirectTo: 'invite',
