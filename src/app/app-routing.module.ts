@@ -3,6 +3,8 @@ import { ActivatedRouteSnapshot, CanActivateFn, RouterModule, RouterStateSnapsho
 import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { AuthService } from './services/auth-service/auth.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AttemptProcessingComponent } from './components/attempt-processing/attempt-processing.component';
 
 
 const canActivateReport: CanActivateFn =
@@ -28,13 +30,17 @@ const routes: Routes = [
     component: InvitePageComponent
   },
   {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
     path: '',
     redirectTo: 'invite',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'invite',
+    redirectTo: 'not-found',
     pathMatch: 'full'
   }
 ];
