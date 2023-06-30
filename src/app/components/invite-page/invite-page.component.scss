@@ -57,24 +57,3 @@ p{
     margin-right: 3.5vw;
 }
 
-.overlayOn{
-    position: fixed;
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(6px);
-    z-index: 2;
-}
-.loading-text {
-    position: absolute;
-    top: 25vh;
-    left: 50vw;
-    font-size: 50px !important; 
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-}

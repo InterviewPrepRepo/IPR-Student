@@ -11,7 +11,6 @@ export class InvitePageComponent {
   constructor(private invite: InviteService) {
   }
   loading: boolean = false;
-  overlay: string = '';
   userForm = new FormGroup(
     {
       firstName: new FormControl('', Validators.required),
@@ -22,7 +21,6 @@ export class InvitePageComponent {
   onInviteLinkClick(): void {
     this.userForm.markAllAsTouched();
     this.loading = true;
-    this.overlay = 'overlayOn';
     if (this.userForm.valid) {
 
       let name = this.userForm.value.firstName + ' ' + this.userForm.value.lastName;
@@ -30,12 +28,10 @@ export class InvitePageComponent {
       this.invite.onInvite(this.userForm.value.email!, name).subscribe(
         (result) => {
           this.loading = result;
-          this.overlay = '';
         })
     }
     else {
       this.loading = false;
-      this.overlay = '';
     }
   }
 }
