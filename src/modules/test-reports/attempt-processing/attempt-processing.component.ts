@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-attempt-processing',
+  selector: 'attempt-processing',
   templateUrl: './attempt-processing.component.html',
   styleUrls: ['./attempt-processing.component.scss']
 })

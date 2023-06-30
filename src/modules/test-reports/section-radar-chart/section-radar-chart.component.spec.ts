@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SectionChartComponent } from './section-chart.component';
+import { SectionRadarChartComponent } from './section-radar-chart.component';
 
 describe('SectionChartComponent', () => {
-  let component: SectionChartComponent;
-  let fixture: ComponentFixture<SectionChartComponent>;
+  let component: SectionRadarChartComponent;
+  let fixture: ComponentFixture<SectionRadarChartComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SectionChartComponent]
+      declarations: [SectionRadarChartComponent]
     });
-    fixture = TestBed.createComponent(SectionChartComponent);
+    fixture = TestBed.createComponent(SectionRadarChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

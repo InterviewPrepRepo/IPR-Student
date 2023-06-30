@@ -19,11 +19,11 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: 'app-section-chart',
-  templateUrl: './section-chart.component.html',
-  styleUrls: ['./section-chart.component.scss']
+  selector: 'report-section-radar-chart',
+  templateUrl: './section-radar-chart.component.html',
+  styleUrls: ['./section-radar-chart.component.scss']
 })
-export class SectionChartComponent implements OnInit {
+export class SectionRadarChartComponent implements OnInit {
   @Input() sectionNames: string[] = [];
   @Input() allAttemptsScore: {name: string, data: number[]}[] = [];
 

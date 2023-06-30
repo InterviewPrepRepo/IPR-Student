@@ -25,7 +25,7 @@ export type ChartOptions = {
   legend: ApexLegend
 };
 @Component({
-  selector: 'app-section-bar-chart',
+  selector: 'report-section-bar-chart',
   templateUrl: './section-bar-chart.component.html',
   styleUrls: ['./section-bar-chart.component.scss']
 })

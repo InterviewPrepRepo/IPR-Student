@@ -9,7 +9,7 @@ import { Observable, forkJoin } from 'rxjs';
 import TestAttemptQuestion from 'src/models/testAttemptQuestion';
 import ChartData from 'src/models/chartData';
 @Component({
-  selector: 'app-test-attempt-reports',
+  selector: 'test-attempt-reports',
   templateUrl: './test-attempt-reports.component.html',
   styleUrls: ['./test-attempt-reports.component.scss']
 })

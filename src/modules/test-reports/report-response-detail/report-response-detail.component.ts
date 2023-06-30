@@ -5,13 +5,12 @@ import { Config } from 'src/models/iprConfig';
 import { UtilService } from 'src/services/util-service/util.service';
 
 @Component({
-  selector: 'app-report-response-detail',
+  selector: 'report-response-detail',
   templateUrl: './report-response-detail.component.html',
   styleUrls: ['./report-response-detail.component.scss']
 })
 export class ReportResponseDetailComponent implements OnInit {
   @Input() questions: TestAttemptQuestion[] = []
-
 
   displayCorrectAnswer: boolean = true;
   categorizedQuestions: Record<string, TestAttemptQuestion[]> = {};

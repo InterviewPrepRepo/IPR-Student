@@ -8,11 +8,11 @@ import { ReportAnswerSectionComponent } from './report-answer-section/report-ans
 import { ReportResponseDetailComponent } from './report-response-detail/report-response-detail.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SectionBarChartComponent } from './section-bar-chart/section-bar-chart.component';
-import { SectionChartComponent } from './section-chart/section-chart.component';
+import { SectionRadarChartComponent } from './section-radar-chart/section-radar-chart.component';
 import { TestAttemptReportsComponent } from './test-attempt-reports/test-attempt-reports.component';
 import { AccordionModule, NavModule, SharedModule, TabsModule } from '@coreui/angular';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { IprCommonModule } from 'src/ipr-common/ipr-common.module';
+import { AppRoutingModule } from 'src/modules/app/app-routing.module';
+import { IprCommonModule } from 'src/modules/ipr-common/ipr-common.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -24,7 +24,7 @@ import { BrowserModule } from '@angular/platform-browser';
     ReportResponseDetailComponent,
     ReportsComponent,
     SectionBarChartComponent,
-    SectionChartComponent,
+    SectionRadarChartComponent,
     TestAttemptReportsComponent,
   ],
   imports: [
@@ -37,7 +37,8 @@ import { BrowserModule } from '@angular/platform-browser';
     TabsModule,
     NavModule,
     AccordionModule,
-    IprCommonModule
+    IprCommonModule,
+    
   ],
   exports: [
     TestAttemptReportsComponent

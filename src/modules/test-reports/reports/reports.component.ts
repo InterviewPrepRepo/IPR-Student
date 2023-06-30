@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import TestAttemptQuestion from 'src/models/testAttemptQuestion';
 import ChartData from 'src/models/chartData';
 @Component({
-  selector: 'app-reports',
+  selector: 'reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
