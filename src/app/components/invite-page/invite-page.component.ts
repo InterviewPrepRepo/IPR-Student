@@ -21,7 +21,6 @@ export class InvitePageComponent {
   onInviteLinkClick(): void {
     this.userForm.markAllAsTouched();
     this.loading = true;
-
     if (this.userForm.valid) {
 
       let name = this.userForm.value.firstName + ' ' + this.userForm.value.lastName;

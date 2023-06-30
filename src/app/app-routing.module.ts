@@ -2,7 +2,8 @@ import { NgModule, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, RouterModule, RouterStateSnapshot, Routes, Router } from '@angular/router';
 import { TestAttemptReportsComponent } from './components/test-attempt-reports/test-attempt-reports.component';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
-import { AuthService } from '../services/auth-service/auth.service';
+import { AuthService } from 'src/services/auth-service/auth.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 const canActivateReport: CanActivateFn =
@@ -28,13 +29,17 @@ const routes: Routes = [
     component: InvitePageComponent
   },
   {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
     path: '',
     redirectTo: 'invite',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'invite',
+    redirectTo: 'not-found',
     pathMatch: 'full'
   }
 ];
