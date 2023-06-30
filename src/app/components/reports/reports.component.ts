@@ -2,73 +2,27 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ImochaService } from '../../services/imocha-service/imocha.service';
 import TestAttemptQuestion from '../../models/testAttemptQuestion';
 import { UtilService } from 'src/app/services/util-service/util.service';
-
-interface ChartData {
-  keys: string[]
-  values: number[]
-}
-
+import ChartData from 'src/app/models/chartData';
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
-export class ReportsComponent implements OnInit {
+export class ReportsComponent {
   @Input() attemptId: number = 0;
-  
-  
-  currentQuestion: number = 1;
-  videoUrl: string = "";
-  questions: TestAttemptQuestion[] = [];
-  loading: boolean = true;
-  testScore: number = 0;
-  scoreData: ChartData = {
+  @Input() questions: TestAttemptQuestion[] = [];
+  @Input() testScore: number = 0;
+  @Input() scoreData: ChartData = {
     //set keys array for the chart to consume
     keys: [],
     values: []
   };
+  @Input() allAttemptsScore: {name: string, data: number[]}[] = [];
+  
+  currentQuestion: number = 1;
+  videoUrl: string = "";
 
   chartOptions: any = {};
 
-  constructor(private imocha: ImochaService, private util : UtilService) { }
-
-  ngOnInit(): void {
-      this.imocha.getQuestionsByTestAttemptId(this.attemptId).subscribe((res) => {
-        this.questions = res.result;
-        //create a map for each section with the score candidate got for the questions in the section
-        //and also calculate total score while we're at it
-        const sectionMap: Record<string, number[]> = {};
-        let scoreSum = 0;
-        let totalSection = 0;
-        this.questions.map((question) => {
-          // don't include negatives count it as does not exist
-          if (question.score >= 0) {
-            //calculating score
-            if(!question.candidateAnswer.videoAnswer) {
-              //this is imocha calculated coding questions
-              question.score = (question.score / question.points) * 100
-            }
-            
-            if (question.sectionName in sectionMap) {
-              sectionMap[question.sectionName].push(question.score);              
-            }
-            else {
-              sectionMap[question.sectionName] = [ question.score ];
-            }
-            scoreSum += question.score;
-            totalSection++;
-          }
-        })
-        this.testScore = scoreSum / totalSection;
-
-        //Calculate average score for each section name
-        Object.keys(sectionMap).map((key) => {
-          let average = sectionMap[key].reduce((a, b) => a + b, 0) / sectionMap[key].length;
-          //only include sections with positive average
-          this.scoreData.keys.push(key);
-          this.scoreData.values.push(this.util.truncateToSignificantDigit(average));
-        });
-        this.loading = false;
-      })
-  }
+  constructor() { }
 }

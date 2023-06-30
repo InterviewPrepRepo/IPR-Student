@@ -25,7 +25,8 @@ export type ChartOptions = {
 })
 export class SectionChartComponent implements OnInit {
   @Input() sectionNames: string[] = [];
-  @Input() sectionAverages: number[] = [];
+  @Input() allAttemptsScore: {name: string, data: number[]}[] = [];
+
   @ViewChild('apexRadarChart') chart! : ChartComponent;
 
   constructor(private notify : NotifyService) { }
@@ -38,7 +39,7 @@ export class SectionChartComponent implements OnInit {
       }
     ],
     chart: {
-      height: 450,
+      height: 600,
       type: "radar"
     },
     title: {
@@ -55,7 +56,7 @@ export class SectionChartComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.chartOptions.series[0].data = this.sectionAverages;
+    this.chartOptions.series = this.allAttemptsScore;
     this.chartOptions.xaxis.categories = this.sectionNames;
 
     this.notify.tabSwitchObservable$.subscribe((tabIndex : number) => {
