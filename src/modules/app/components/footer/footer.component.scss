@@ -3,7 +3,7 @@
     margin: 3.5vw;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    color: var(--revature-white);
+    color: var(--revature-gray);
     font-family: 'Roboto';
     padding-top: 3vh;
     padding-bottom: 0;
@@ -21,4 +21,9 @@ svg{
 span{
     margin-right: 10px;
     cursor: pointer;
+}
+
+.trimmed{
+    padding: 10px;
+    font-size: .75em;
 }
