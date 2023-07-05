@@ -1,0 +1,30 @@
+.brand {
+    width: 120pt;
+}
+
+.navbar{
+    padding-top: 5vh;
+    margin-bottom: 1vh;
+    margin-left: 3.5vw;
+    margin-right: 3.5vw;
+    width: 90vw;
+}
+
+.navigation{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.navbar-option{
+    font-size: 20px;
+    font-family: 'Roboto';
+    line-height: 24px;
+    padding: 15px 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+
+
+
+

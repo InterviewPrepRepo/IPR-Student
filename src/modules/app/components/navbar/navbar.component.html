@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <div class="container-fluid navigation">
+        <span class="navbar-brand mb-0 cursor-pointer" routerLink="/invite">
+            <img class="d-inline-block align-text-bottom brand" alt="revature-logo"
+                src="assets/REVATURE-PrimaryLogo-FullClr.svg">
+        </span>
+        <span *ngIf="this.auth.isAuthenticated()" class="btn btn-revature-blue cursor-pointer navbar-option" routerLink="/report" [queryParams]="{testId: invite.testId}">
+            Reports
+        </span>
+    </div>
+</nav>
