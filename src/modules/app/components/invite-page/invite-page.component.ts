@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InviteService } from 'src/services/invite-service/invite.service';
 
 @Component({
@@ -7,31 +7,76 @@ import { InviteService } from 'src/services/invite-service/invite.service';
   templateUrl: './invite-page.component.html',
   styleUrls: ['./invite-page.component.scss']
 })
+
 export class InvitePageComponent {
-  constructor(private invite: InviteService) {
-  }
   loading: boolean = false;
-  userForm = new FormGroup(
-    {
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email])
-    }
-  );
+  userForm!: FormGroup;
+  experienceLevels: number[] = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ];
+  technologies: string[] = [
+    'REST', 'Core Java 8+', 'Spring Boot', 'Docker', 'Kubernetes',
+    'AWS', 'Kafka', 'Git/SCM', 'RDMS'
+  ];
+
+  constructor(private formBuilder: FormBuilder, private invite: InviteService) {
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.userForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      job: [''],
+      experience: [''],
+      techCheckboxes: this.formBuilder.group(this.createTechCheckboxes())
+    });
+  }
+
+  createTechCheckboxes(): FormControl {
+    const checkboxes: any = {};
+    this.technologies.forEach((technology: string) => {
+      checkboxes[technology] = new FormControl(false);
+    });
+    return checkboxes;
+  }
+
   onInviteLinkClick(): void {
     this.userForm.markAllAsTouched();
     this.loading = true;
+
     if (this.userForm.valid) {
 
-      let name = this.userForm.value.firstName + ' ' + this.userForm.value.lastName;
+      const name = this.userForm.value.firstName + ' ' + this.userForm.value.lastName;
 
-      this.invite.onInvite(this.userForm.value.email!, name).subscribe(
-        (result) => {
-          this.loading = result;
-        })
-    }
-    else {
+      const selectedTechnologies: string[] = [];
+      const techCheckboxes = this.userForm.value.techCheckboxes;
+      for (const technology in techCheckboxes) {
+        if (techCheckboxes[technology]) {
+          selectedTechnologies.push(technology);
+        }
+      }
+      // ['AWS', 'Java Core 8+']
+      let skillsArr : string[] = [];
+      for(let key in this.userForm.value.techCheckboxes) {
+        if(this.userForm.value.techCheckboxes[key]) {
+          skillsArr.push(key);
+        }
+      }
+      
+      this.invite.onInvite(
+        this.userForm.value.email!,
+        name,
+        this.userForm.value.job!,
+        this.userForm.value.experience!,
+        skillsArr
+      ).subscribe((result) => {
+        this.loading = result;
+      });
+    } else {
       this.loading = false;
     }
   }
+
 }

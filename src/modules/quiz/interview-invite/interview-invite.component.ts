@@ -30,11 +30,11 @@ export class InterviewInviteComponent {
     let invitee_email = this.userForm.value.email === null || this.userForm.value.email === undefined ? '' : this.userForm.value.email;
 
     if (invitee_email && invitee_name) {
-      this.invite.onInvite(invitee_email, invitee_name).subscribe(
-        (result) => {
-          this.loading = result;
-        }
-      )
+      // this.invite.onInvite(invitee_email, invitee_name).subscribe(
+      //   (result) => {
+      //     this.loading = result;
+      //   }
+      // )
     } //end if block for form validation
     else {
       this.loading = false;
