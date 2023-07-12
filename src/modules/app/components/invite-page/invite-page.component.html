@@ -134,29 +134,52 @@
                     <div class="form-group technologies-group">
                         <label class="technologies-label" for="technologies">Technologies</label>
                         <div class="container checkboxes">
-                            <!-- <ng-container *ngFor="let tech in technologies">
-                                <div>
-                                    <input type="checkbox" class="form-control" id="tech" formControlName="technologies" >
-                                    <label for="technologies">
-                                        {{ tech }}
-                                    </label>
-                                    
-                                </div>
-                                <input type="checkbox" [checked]="tech.checked"> {{ tech }}
-                            </ng-container> -->
-                            <div class="checkbox" *ngFor="let tech of technologies">
-                                <label class = 'form-control' id='tech-checkbox'>
-                                  <input type="checkbox" [formControlName]="tech"/>
-                                  {{ tech }}
-                                </label>
-                            </div>
+                            
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="rest-apis" id="rest-apis"/>
+                                REST APIs
+                            </label>
+                            
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="java" id="java"/>
+                                Core Java 8+
+                            </label>
+                            
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="spring" id="spring"/>
+                                Spring Boot
+                            </label>
 
-                            <!-- <div *ngIf="this.userForm.controls['technologies'].invalid && (this.userForm.controls['technologies'].dirty || this.userForm.controls['technologies'].touched)"
-                                class="alert alert-danger">
-                                <div *ngIf="this.userForm.controls['experience'].errors!['required']">
-                                    Please select your experience level.
-                                </div>
-                            </div> -->
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="docker" id="docker"/>
+                                Docker
+                            </label>
+
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="kubernetes" id="kubernetes"/>
+                                Kubernetes
+                            </label>
+
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="aws" id="aws"/>
+                                AWS
+                            </label>
+
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="kafka" id="kafka"/>
+                                Kafka
+                            </label>
+
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="git" id="git"/>
+                                Git/SCM 
+                            </label>
+
+                            <label class = 'form-control' id='tech-checkbox'>
+                                <input type="checkbox" name="rdms" id="rdms"/>
+                                RDMS
+                            </label>
+                            
                         </div>
                     </div>
                     

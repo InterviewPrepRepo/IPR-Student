@@ -1,5 +1,7 @@
+import { ASTWithName } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { cibGit } from '@coreui/icons';
 import { InviteService } from 'src/services/invite-service/invite.service';
 
 @Component({
@@ -18,7 +20,18 @@ export class InvitePageComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       job: new FormControl('', Validators.required),
       experience: new FormControl('', Validators.required),
-      technologies: new FormControl(Validators.required)
+      
+      techCheckboxes: new FormGroup({
+        restAPIs: new FormControl(),
+        java: new FormControl(),
+        spring: new FormControl(),
+        docker: new FormControl(),
+        kubernetes: new FormControl(),
+        aws: new FormControl(),
+        kafka: new FormControl(),
+        git: new FormControl(),
+        rdms: new FormControl()
+      })
     }
   );
 
