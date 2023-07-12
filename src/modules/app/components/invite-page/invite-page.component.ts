@@ -28,8 +28,8 @@ export class InvitePageComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      job: ['', Validators.required],
-      experience: ['', Validators.required],
+      job: [''],
+      experience: [''],
       techCheckboxes: this.formBuilder.group(this.createTechCheckboxes())
     });
   }
