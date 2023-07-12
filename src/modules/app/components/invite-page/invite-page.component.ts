@@ -15,9 +15,22 @@ export class InvitePageComponent {
     {
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      job: new FormControl('', Validators.required),
+      experience: new FormControl('', Validators.required),
+      technologies: new FormControl(Validators.required)
     }
   );
+
+  experienceLevels: string[] = [
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10+'
+  ]
+
+  technologies: string[] = [
+    'REST APIs', 'Core Java 8+', 'Spring Boot', 'Docker', 'Kubernetes', 
+    'AWS', 'Kafka', 'Git/SCM', 'RDMS'
+  ]
+
   onInviteLinkClick(): void {
     this.userForm.markAllAsTouched();
     this.loading = true;

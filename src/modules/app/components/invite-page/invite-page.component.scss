@@ -57,3 +57,7 @@ p{
     margin-right: 3.5vw;
 }
 
+.checkboxes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

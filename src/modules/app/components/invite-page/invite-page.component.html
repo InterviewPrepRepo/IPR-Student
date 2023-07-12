@@ -97,8 +97,71 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+                    <div class="form-group job-group">
+                        <label class="job-label" for="job">Current Role</label>
+                        <div class="container">
+                            <input type="text" class="form-control" id="job" formControlName="job"
+                                placeholder="Current Role">
+                            <div *ngIf="this.userForm.controls['job'].invalid && (this.userForm.controls['job'].dirty || this.userForm.controls['job'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="this.userForm.controls['job'].errors!['required']">
+                                    Current role information is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group experience-group">
+                        <label class="experience-label" for="experience">Years of experience</label>
+                        <div class="container">
+                            <select name="experience" id="experience" class="form-control">
+                                <option value="">Experience Level</option>
+                                <option *ngFor="let level of experienceLevels" [ngValue]="level">
+                                    {{ level }}
+                                </option>
+                            </select>
+                            <div *ngIf="this.userForm.controls['experience'].invalid && (this.userForm.controls['experience'].dirty || this.userForm.controls['experience'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="this.userForm.controls['experience'].errors!['required']">
+                                    Please select your experience level.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group technologies-group">
+                        <label class="technologies-label" for="technologies">Technologies</label>
+                        <div class="container checkboxes">
+                            <!-- <ng-container *ngFor="let tech in technologies">
+                                <div>
+                                    <input type="checkbox" class="form-control" id="tech" formControlName="technologies" >
+                                    <label for="technologies">
+                                        {{ tech }}
+                                    </label>
+                                    
+                                </div>
+                                <input type="checkbox" [checked]="tech.checked"> {{ tech }}
+                            </ng-container> -->
+                            <div class="checkbox" *ngFor="let tech of technologies">
+                                <label class = 'form-control' id='tech-checkbox'>
+                                  <input type="checkbox" [formControlName]="tech"/>
+                                  {{ tech }}
+                                </label>
+                            </div>
+
+                            <!-- <div *ngIf="this.userForm.controls['technologies'].invalid && (this.userForm.controls['technologies'].dirty || this.userForm.controls['technologies'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="this.userForm.controls['experience'].errors!['required']">
+                                    Please select your experience level.
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                    
+
                     <div class="form-group btn-margin">
                         <input type="submit" value="Go To Test" class="btn login-btn btn-revature-secondary" />
                     </div>
