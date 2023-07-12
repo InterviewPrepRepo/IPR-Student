@@ -19,11 +19,11 @@ const canActivateReport: CanActivateFn =
 
 
 const routes: Routes = [
-  {
-    path: 'report',
-    component: TestAttemptReportsComponent,
-    canActivate: [canActivateReport]
-  },
+  // {
+  //   path: 'report',
+  //   component: TestAttemptReportsComponent,
+  //   canActivate: [canActivateReport]
+  // },
   {
     path: 'invite',
     component: InvitePageComponent

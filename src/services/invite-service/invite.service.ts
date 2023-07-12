@@ -13,7 +13,7 @@ export class InviteService {
 
   readonly testId : number = 1250203;
   
-  onInvite(invitee_email: string, invitee_name: string): Observable<boolean> {
+  onInvite(invitee_email: string, invitee_name: string, invitee_job: string, invitee_experience: number, invitee_technologies: string[]): Observable<boolean> {
     invitee_email = invitee_email.toLowerCase();
 
     const loading = new BehaviorSubject(true);
@@ -32,7 +32,7 @@ export class InviteService {
         //We never invited this email to this test before
         if (attemptIndex === -1) {
           //Fire off invite
-          this.imocha.inviteCandidate(this.testId, invitee_name, invitee_email).subscribe({
+          this.imocha.inviteCandidate(this.testId, invitee_name, invitee_email, invitee_job, invitee_experience, invitee_technologies).subscribe({
             next: ({ testUrl, testInvitationId }) => {
               this.auth.setCurrentUser({
                 name: invitee_name,
