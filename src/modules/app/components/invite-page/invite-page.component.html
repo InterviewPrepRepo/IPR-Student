@@ -116,7 +116,7 @@
                     <div class="form-group experience-group">
                         <label class="experience-label" for="experience">Years of experience</label>
                         <div class="container">
-                            <select name="experience" id="experience" class="form-control">
+                            <select name="experience" id="experience" class="form-control" formControlName="experience">
                                 <option value="">Experience Level</option>
                                 <option *ngFor="let level of experienceLevels" [ngValue]="level">
                                     {{ level }}
@@ -131,59 +131,69 @@
                         </div>
                     </div>
 
-                    <div class="form-group technologies-group">
+                    <!-- <div class="form-group technologies-group" formGroupName="techCheckboxes">
                         <label class="technologies-label" for="technologies">Technologies</label>
                         <div class="container checkboxes">
                             
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="rest-apis" id="rest-apis"/>
+                            <label class = 'form-control' for="rest-apis">
+                                <input type="checkbox" name="rest-apis" id="rest-apis" formControlName="restAPIs"/>
                                 REST APIs
                             </label>
                             
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="java" id="java"/>
+                            <label class = 'form-control' for='java' >
+                                <input type="checkbox" name="java" id="java" formControlName="java"/>
                                 Core Java 8+
                             </label>
                             
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="spring" id="spring"/>
+                            <label class = 'form-control' for='spring' >
+                                <input type="checkbox" name="spring" id="spring" formControlName="spring"/>
                                 Spring Boot
                             </label>
 
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="docker" id="docker"/>
+                            <label class = 'form-control' for='docker' >
+                                <input type="checkbox" name="docker" id="docker" formControlName="docker"/>
                                 Docker
                             </label>
 
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="kubernetes" id="kubernetes"/>
+                            <label class = 'form-control' for='kubernetes' >
+                                <input type="checkbox" name="kubernetes" id="kubernetes" formControlName="kubernetes"/>
                                 Kubernetes
                             </label>
 
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="aws" id="aws"/>
+                            <label class = 'form-control' for='aws' >
+                                <input type="checkbox" name="aws" id="aws" formControlName="aws"/>
                                 AWS
                             </label>
 
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="kafka" id="kafka"/>
+                            <label class = 'form-control' for='kafka' >
+                                <input type="checkbox" name="kafka" id="kafka" formControlName="kafka"/>
                                 Kafka
                             </label>
 
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="git" id="git"/>
+                            <label class = 'form-control' for='git' >
+                                <input type="checkbox" name="git" id="git" formControlName="git"/>
                                 Git/SCM 
                             </label>
 
-                            <label class = 'form-control' id='tech-checkbox'>
-                                <input type="checkbox" name="rdms" id="rdms"/>
+                            <label class = 'form-control' for='rdms' >
+                                <input type="checkbox" name="rdms" id="rdms" formControlName="rdms"/>
                                 RDMS
                             </label>
+
+                        
                             
                         </div>
-                    </div>
+                    </div> -->
                     
-                    
+                    <div class="form-group technologies-group" formGroupName="techCheckboxes">
+                        <label class="technologies-label" for="technologies">Technologies</label>
+                        <div class="container checkboxes">
+                          <label class="form-control" *ngFor="let technology of technologies">
+                            <input type="checkbox" [formControlName]="technology">
+                            {{ technology }}
+                          </label>
+                        </div>
+                      </div>
 
                     <div class="form-group btn-margin">
                         <input type="submit" value="Go To Test" class="btn login-btn btn-revature-secondary" />

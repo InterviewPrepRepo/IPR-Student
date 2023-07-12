@@ -23,8 +23,8 @@ export class ImochaService {
   }
 
   //Invites candidate through iMocha api. TestId, name, and email are required 
-  inviteCandidate(testId: number, name: string, email: string): Observable<any> {
-    return this.http.post<any>(this.urlBuilder('invite'), { testId, email, name });
+  inviteCandidate(testId: number, name: string, email: string, currentRole: string, yearsExperience: number, skills: string[]): Observable<any> {
+    return this.http.post<any>(this.urlBuilder('invite'), { testId, email, name, currentRole, yearsExperience, skills});
   }
 
   //Asks Imocha api for a new testAttemptId to re-attempt a test. TestId, name, and email are required.
