@@ -114,7 +114,7 @@
                         <label class="experience-label" for="experience">Years of experience</label>
                         <div class="container">
                             <select name="experience" id="experience" class="form-control" formControlName="experience">
-                                <option value="">Experience Level</option>
+                                <option value=0>Experience Level</option>
                                 <option *ngFor="let level of experienceLevels" [ngValue]="level">
                                     {{ level }}
                                 </option>
