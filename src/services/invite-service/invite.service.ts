@@ -47,7 +47,7 @@ export class InviteService {
             },
             error: (err) => {
               console.error(err);
-              loading.next(false);
+              loading.error(err);
             }
           })
         } //end if block for finding if attempt exists for this test
@@ -69,14 +69,14 @@ export class InviteService {
             },
             error: (err) => {
               console.error(err);
-              loading.next(false);
+              loading.error(err);
             }
           })
         } //end else block
       },
       error: (err) => {
         console.error(err);
-        loading.next(false);
+        loading.error(false);
       }
     })
 
