@@ -10,6 +10,7 @@ import { InviteService } from 'src/services/invite-service/invite.service';
 
 export class InvitePageComponent {
   loading: boolean = false;
+  errorMessage: boolean = false;
   userForm!: FormGroup;
   experienceLevels: number[] = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -45,7 +46,7 @@ export class InvitePageComponent {
   onInviteLinkClick(): void {
     this.userForm.markAllAsTouched();
     this.loading = true;
-
+    this.errorMessage = false;
     if (this.userForm.valid) {
 
       const name = this.userForm.value.firstName + ' ' + this.userForm.value.lastName;
@@ -71,8 +72,14 @@ export class InvitePageComponent {
         this.userForm.value.job!,
         this.userForm.value.experience!,
         skillsArr
-      ).subscribe((result) => {
+      ).subscribe({
+        next :(result) => {
         this.loading = result;
+        },
+        error: (err) => {
+          this.errorMessage = true;
+          this.loading = false;
+        }
       });
     } else {
       this.loading = false;

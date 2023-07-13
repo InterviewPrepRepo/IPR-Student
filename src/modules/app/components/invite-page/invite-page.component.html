@@ -1,4 +1,7 @@
 <div class="container content">
+    <div *ngIf="errorMessage">
+        <app-error-message></app-error-message>
+    </div>
     <div class="row">
         <div class="col-8">
             <div>
@@ -130,7 +133,7 @@
                       </div>
 
                     <div class="form-group btn-margin">
-                        <input type="submit" value="Go To Test" class="btn login-btn btn-revature-secondary" />
+                        <input type="submit" value="Go To Test" [disabled]="userForm.invalid" class="btn login-btn btn-revature-secondary" />
                     </div>
                 </form>
             </div>

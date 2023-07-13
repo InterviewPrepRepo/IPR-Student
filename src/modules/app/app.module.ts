@@ -7,7 +7,7 @@ import { IprCommonModule } from 'src/modules/ipr-common/ipr-common.module';
 import { TestReportsModule } from 'src/modules/test-reports/test-reports.module';
 import { QuizModule } from 'src/modules/quiz/quiz.module';
 import { AppRoutingModule } from './app-routing.module';
-
+import { AlertModule } from '@coreui/angular';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
@@ -15,6 +15,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     NavbarComponent,
     InvitePageComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     ReactiveFormsModule,
     HttpClientModule,
     IconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AlertModule,
   ],
   bootstrap: [AppComponent],
   providers: [
