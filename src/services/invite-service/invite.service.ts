@@ -11,7 +11,7 @@ export class InviteService {
 
   constructor(private imocha: ImochaService, private auth: AuthService) { }
 
-  readonly testId : number = 1250203;
+  readonly testId : number = 1251708;
   
   onInvite(invitee_email: string, invitee_name: string, invitee_job: string, invitee_experience: number, invitee_technologies: string[]): Observable<boolean> {
     invitee_email = invitee_email.toLowerCase();
@@ -47,7 +47,7 @@ export class InviteService {
             },
             error: (err) => {
               console.error(err);
-              loading.next(false);
+              loading.error(err);
             }
           })
         } //end if block for finding if attempt exists for this test
@@ -69,14 +69,14 @@ export class InviteService {
             },
             error: (err) => {
               console.error(err);
-              loading.next(false);
+              loading.error(err);
             }
           })
         } //end else block
       },
       error: (err) => {
         console.error(err);
-        loading.next(false);
+        loading.error(false);
       }
     })
 
