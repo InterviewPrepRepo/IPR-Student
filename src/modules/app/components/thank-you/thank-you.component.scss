@@ -1,0 +1,29 @@
+.thankyou-page {
+    background: linear-gradient(180deg, #30A0CC 0%, #0741CB 74.48%);
+    border-radius: 15px;
+    min-height: 75vh;
+    margin-bottom: 2%
+}
+.center {
+    text-align: center;
+}
+
+img {
+    width: 300px;
+}
+h1 {
+    color: var(--revature-orange);
+    font-family: 'Roboto';
+    font-weight: 700;
+    color: whitesmoke;
+}
+
+p {
+    font-size: 17pt;
+    font-weight: 500;
+    color: rgb(255, 255, 255, 0.7);
+}
+
+body {
+    background-color: burlywood;
+}
