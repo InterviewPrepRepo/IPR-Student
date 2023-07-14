@@ -1,13 +1,16 @@
+.footer-wrap {
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
 .footer-content{
     background-color: #00183C;
-    margin: 3.5vw;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     color: var(--revature-gray);
     font-family: 'Roboto';
     padding-top: 3vh;
     padding-bottom: 0;
-    max-width: 90vw;
 }
 
 .filter-white{
