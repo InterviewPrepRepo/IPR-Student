@@ -4,7 +4,7 @@ import { TestAttemptReportsComponent } from '../test-reports/test-attempt-report
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { AuthService } from 'src/services/auth-service/auth.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 const canActivateReport: CanActivateFn =
   (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'not-found',
     component: NotFoundComponent,
+  },
+  {
+    path: 'thank-you',
+    component: ThankYouComponent
   },
   {
     path: '',
