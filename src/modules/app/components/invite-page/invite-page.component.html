@@ -61,7 +61,7 @@
                 <form [formGroup]="userForm" (submit)="onInviteLinkClick()">
                     <label class="name-label" for="first-name">Full Name*</label>
                     <div class="container mx-0">
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-md">
                                 <input type="text" class="form-control" id="first-name" formControlName="firstName"
                                     placeholder="First Name">
@@ -123,7 +123,7 @@
                     </div>
                     
                     <div class="form-group technologies-group" formGroupName="techCheckboxes">
-                        <label class="technologies-label" for="technologies">Technologies</label>
+                        <label class="technologies-label" for="technologies">Pick the technologies you are experienced with: </label>
                         <div class="container checkboxes">
                           <label class="form-control" *ngFor="let technology of technologies">
                             <input type="checkbox" [formControlName]="technology">
