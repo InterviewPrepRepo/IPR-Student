@@ -66,7 +66,7 @@
                                 <input type="text" class="form-control" id="first-name" formControlName="firstName"
                                     placeholder="First Name">
                                 <div *ngIf="this.userForm.controls['firstName'].invalid && (this.userForm.controls['firstName'].dirty || this.userForm.controls['firstName'].touched)"
-                                    class="alert alert-danger">
+                                    class="alert alert-danger form-error">
                                     <div *ngIf="this.userForm.controls['firstName'].errors!['required']">
                                         First name is required.
                                     </div>
@@ -76,7 +76,7 @@
                                 <input type="text" class="form-control" id="last-name" formControlName="lastName"
                                     placeholder="Last Name">
                                 <div *ngIf="this.userForm.controls['lastName'].invalid && (this.userForm.controls['lastName'].dirty || this.userForm.controls['lastName'].touched)"
-                                    class="alert alert-danger">
+                                    class="alert alert-danger form-error">
                                     <div *ngIf="this.userForm.controls['lastName'].errors!['required']">
                                         Last name is required.
                                     </div>
@@ -91,7 +91,7 @@
                             <input type="email" class="form-control" id="email" formControlName="email"
                                 placeholder="Email">
                             <div *ngIf="this.userForm.controls['email'].invalid && (this.userForm.controls['email'].dirty || this.userForm.controls['email'].touched)"
-                                class="alert alert-danger">
+                                class="alert alert-danger form-error">
                                 <div *ngIf="this.userForm.controls['email'].errors!['required']">
                                     Email is required.
                                 </div>
@@ -133,7 +133,7 @@
                       </div>
 
                     <div class="form-group btn-margin">
-                        <input type="submit" value="Go To Test" [disabled]="userForm.invalid" class="btn login-btn btn-revature-secondary" />
+                        <input type="submit" value="Go to Test" [disabled]="userForm.invalid" class="btn login-btn btn-revature-secondary" />
                     </div>
                 </form>
             </div>
