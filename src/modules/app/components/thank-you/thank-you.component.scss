@@ -2,7 +2,10 @@
     background: linear-gradient(180deg, #30A0CC 0%, #0741CB 74.48%);
     border-radius: 15px;
     min-height: 75vh;
-    margin-bottom: 2%
+    margin-bottom: 2%;
+    
+    display: flex;
+    align-items: center;
 }
 
 .center {
