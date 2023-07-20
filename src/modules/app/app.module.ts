@@ -13,7 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InvitePageComponent } from './components/invite-page/invite-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule  } from 'ngx-google-analytics';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
@@ -37,6 +37,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     HttpClientModule,
     IconModule,
     BrowserAnimationsModule,
+    NgxGoogleAnalyticsModule.forRoot('G-NQZ13G6NKT'),
+    NgxGoogleAnalyticsRouterModule,
     AlertModule,
   ],
   bootstrap: [AppComponent],
