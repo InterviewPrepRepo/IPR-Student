@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import TestAttemptQuestion from 'src/models/testAttemptQuestion';
+import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
 @Component({
   selector: 'app-report-answer-section',
   templateUrl: './report-answer-section.component.html',

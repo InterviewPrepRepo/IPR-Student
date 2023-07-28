@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { InviteService } from 'src/services/invite-service/invite.service';
+import { InviteService } from 'src/app/services/invite-service/invite.service';
 
 @Component({
   selector: 'app-invite-page',

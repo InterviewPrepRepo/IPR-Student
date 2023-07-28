@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Question } from 'src/models/question';
+import { Question } from 'src/app/models/question';
 
 @Component({
   selector: 'app-question-detail',

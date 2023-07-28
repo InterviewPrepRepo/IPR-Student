@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { cilX, cilXCircle } from '@coreui/icons';
-import { InviteService } from 'src/services/invite-service/invite.service';
+import { InviteService } from 'src/app/services/invite-service/invite.service';
 
 
 @Component({

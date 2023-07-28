@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/services/auth-service/auth.service';
-import { InviteService } from 'src/services/invite-service/invite.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { InviteService } from 'src/app/services/invite-service/invite.service';
 
 @Component({
   selector: 'app-navbar',
