@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import TestAttemptQuestion from 'src/models/testAttemptQuestion';
-import ChartData from 'src/models/chartData';
+import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
+import ChartData from 'src/app/models/chartData';
 @Component({
   selector: 'reports',
   templateUrl: './reports.component.html',

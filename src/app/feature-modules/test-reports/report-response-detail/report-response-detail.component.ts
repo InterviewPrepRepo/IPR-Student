@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-web-storage';
-import TestAttemptQuestion from 'src/models/testAttemptQuestion';
-import { Config } from 'src/models/iprConfig';
-import { UtilService } from 'src/services/util-service/util.service';
+import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
+import { Config } from 'src/app/models/iprConfig';
+import { UtilService } from 'src/app/services/util-service/util.service';
 
 @Component({
   selector: 'report-response-detail',

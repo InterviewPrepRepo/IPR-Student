@@ -7,7 +7,7 @@ import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgressModule, ModalModule } from '@coreui/angular';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { IprCommonModule } from 'src/modules/ipr-common/ipr-common.module';
+import { IprCommonModule } from 'src/app/feature-modules/ipr-common/ipr-common.module';
 
 @NgModule({
   declarations: [

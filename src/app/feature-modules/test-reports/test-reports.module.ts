@@ -11,8 +11,8 @@ import { SectionBarChartComponent } from './section-bar-chart/section-bar-chart.
 import { SectionRadarChartComponent } from './section-radar-chart/section-radar-chart.component';
 import { TestAttemptReportsComponent } from './test-attempt-reports/test-attempt-reports.component';
 import { AccordionModule, NavModule, SharedModule, TabsModule } from '@coreui/angular';
-import { AppRoutingModule } from 'src/modules/app/app-routing.module';
-import { IprCommonModule } from 'src/modules/ipr-common/ipr-common.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { IprCommonModule } from 'src/app/feature-modules/ipr-common/ipr-common.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 

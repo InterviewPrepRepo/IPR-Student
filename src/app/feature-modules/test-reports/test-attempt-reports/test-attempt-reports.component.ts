@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { ImochaService } from 'src/services/imocha-service/imocha.service';
+import { ImochaService } from 'src/app/services/imocha-service/imocha.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import User from 'src/models/user';
-import { AuthService } from 'src/services/auth-service/auth.service';
-import TestInvitation from 'src/models/testInvitation';
-import { NotifyService } from 'src/services/notify-service/notify.service';
+import User from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import TestInvitation from 'src/app/models/testInvitation';
+import { NotifyService } from 'src/app/services/notify-service/notify.service';
 import { Observable, forkJoin } from 'rxjs';
-import TestAttemptQuestion from 'src/models/testAttemptQuestion';
-import ChartData from 'src/models/chartData';
+import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
+import ChartData from 'src/app/models/chartData';
 @Component({
   selector: 'test-attempt-reports',
   templateUrl: './test-attempt-reports.component.html',
