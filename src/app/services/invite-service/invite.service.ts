@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ImochaService } from '../imocha-service/imocha.service';
-import TestInvitation from 'src/models/testInvitation';
+import TestInvitation from 'src/app/models/testInvitation';
 import { AuthService } from '../auth-service/auth.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 

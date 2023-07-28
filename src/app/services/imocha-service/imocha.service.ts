@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import TestInvitation from 'src/models/testInvitation';
-import TestAttemptQuestion from 'src/models/testAttemptQuestion';
-import VideoTest from 'src/models/videoTest';
+import TestInvitation from 'src/app/models/testInvitation';
+import TestAttemptQuestion from 'src/app/models/testAttemptQuestion';
+import VideoTest from 'src/app/models/videoTest';
 import { UtilService } from '../util-service/util.service';
-import ChartData from 'src/models/chartData';
+import ChartData from 'src/app/models/chartData';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import User from 'src/models/user';
+import User from 'src/app/models/user';
 import { LocalStorageService } from 'angular-web-storage';
 
 @Injectable({
